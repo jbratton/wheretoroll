@@ -23,12 +23,11 @@
           input.form-control#start_date type="text" data-date-format="YYYY-MM-DD" name="derby_event[start_date]" placeholder="Start Date"
           span.glyphicon.glyphicon-asterisk.form-control-feedback
     .col-md-3
-      .form-group.has-feedback
+      .form-group
         .input-group.date#start_time_group
           span.input-group-addon
             span.glyphicon.glyphicon-time
           input.form-control#start_time type="text" data-date-format="h:mm A" name="derby_event[start_time]" placeholder="Start Time"
-          span.glyphicon.glyphicon-asterisk.form-control-feedback
   .row
     .col-md-3
       .form-group
@@ -131,4 +130,59 @@
       .actions = f.submit "Submit"
   .row
     br
+  script
+    |
+      $(document).ready(function () {
+        $('#new_derby_event').bootstrapValidator({
+          feedbackIcons: false,
+          submitButtons: "[name='commit']",
+          fields: {
+            "derby_event[submission_contact]": {
+              validators: {
+                notEmpty: {
+                  message: "Your email address is required."
+                },
+                emailAddress: {
+                  message: "Please enter a valid email address."
+                }
+              }
+            },
+            "derby_event[name]": {
+              validators: {
+                notEmpty: {
+                  message: "We need to know the name of the event!"
+                }
+              }
+            },
+            "derby_event[start_date]": {
+              validators: {
+                notEmpty: {
+                  message: "The date of the event is required."
+                }
+              }
+            },
+            "derby_event[city]": {
+              validators: {
+                notEmpty: {
+                  message: "Please tell us the city the event will be in."
+                }
+              }
+            },
+            "derby_event[state]": {
+              validators: {
+                notEmpty: {
+                  message: "The state or province or your country's equivalent is required."
+                }
+              }
+            },
+            "derby_event[country]": {
+              validators: {
+                notEmpty: {
+                  message: "The country is required."
+                }
+              }
+            }
+          }
+        })
+      });
 
