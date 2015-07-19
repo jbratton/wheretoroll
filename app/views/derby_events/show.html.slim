@@ -1,0 +1,51 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @derby_event.name
+p
+  strong Start datetime:
+  = @derby_event.start_datetime
+p
+  strong End datetime:
+  = @derby_event.end_datetime
+p
+  strong Venue:
+  = @derby_event.venue
+p
+  strong City:
+  = @derby_event.city
+p
+  strong State:
+  = @derby_event.state
+p
+  strong Zip code:
+  = @derby_event.zip_code
+p
+  strong Country:
+  = @derby_event.country
+p
+  strong Web site:
+  = @derby_event.web_site
+p
+  strong Contact:
+  = @derby_event.contact
+p
+  strong Host:
+  = @derby_event.host
+p
+  strong Cost:
+  = @derby_event.cost
+p
+  strong Ruleset:
+  = @derby_event.ruleset
+p
+  strong Preregistration:
+  = @derby_event.preregistration
+p
+  strong Spectators:
+  = @derby_event.spectators
+
+= link_to 'Edit', edit_derby_event_path(@derby_event)
+'|
+= link_to 'Back', derby_events_path

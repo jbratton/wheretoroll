@@ -1,0 +1,11 @@
+.container
+  h2 Where to Roll
+  - @derby_events.each do |derby_event|
+    row
+      .col-md-3.col-md-offset-1 = derby_event.name
+      .col-md-1 = derby_event.start_datetime
+      .col-md-1 = derby_event.country
+      .col-md-1 = derby_event.city
+      .col-md-2 = derby_event.rulesets
+      .col-md-2 = derby_event.genders
+

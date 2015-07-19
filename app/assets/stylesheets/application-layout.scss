@@ -1,0 +1,14 @@
+body {
+  font-family: 'Didact Gothic', 'Century Gothic', 'CenturyGothic', 'AppleGothic', sans-serif;
+  padding-top: $navbar-height;
+  padding-bottom: 70px;
+}
+
+.navbar-brand,
+.navbar-nav li a {
+  line-height: $navbar-height;
+  height: $navbar-height;
+  padding-top: 0;
+}
+
+

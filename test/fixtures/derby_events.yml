@@ -1,0 +1,63 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  start_date: 2015-07-18
+  start_time: 2015-07-18 15:16:18
+  end_date: 2015-07-18
+  end_time: 2015-07-18 15:16:18
+  venue: MyString
+  city: MyString
+  state: MyString
+  postal_code: MyString
+  country: MyString
+  host: MyString
+  website: MyString
+  event_contact: MyString
+  cost: MyString
+  mrda: 
+  wftda: 
+  jrda: 
+  made: 
+  usars: 
+  rdcl: 
+  female: 
+  male: 
+  coed: 
+  preregistration: 
+  spectators: 
+  general_info: MyText
+  submission_contact: MyString
+  approved: 
+  deleted: 
+
+two:
+  name: MyString
+  start_date: 2015-07-18
+  start_time: 2015-07-18 15:16:18
+  end_date: 2015-07-18
+  end_time: 2015-07-18 15:16:18
+  venue: MyString
+  city: MyString
+  state: MyString
+  postal_code: MyString
+  country: MyString
+  host: MyString
+  website: MyString
+  event_contact: MyString
+  cost: MyString
+  mrda: 
+  wftda: 
+  jrda: 
+  made: 
+  usars: 
+  rdcl: 
+  female: 
+  male: 
+  coed: 
+  preregistration: 
+  spectators: 
+  general_info: MyText
+  submission_contact: MyString
+  approved: 
+  deleted: 

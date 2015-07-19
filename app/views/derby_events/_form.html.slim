@@ -1,0 +1,134 @@
+= bootstrap_form_for @derby_event, url: submit_path do |f|
+  - if @derby_event.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@derby_event.errors.count, "error")} prohibited this event from being saved:"
+      ul
+        - @derby_event.errors.full_messages.each do |message|
+          li = message
+
+  .row
+    br
+  .row
+    .col-md-6
+      = f.email_field :submission_contact, label: "Submitter's (your) Email", hide_label: true, placeholder: "Submitter's (your) Email", help: "We promise to only use this to contact you regarding this submission", icon: "asterisk"
+  .row
+    .col-md-6
+      = f.text_field :name, label: "Event Name", hide_label: true, placeholder: "Event Name", icon: "asterisk"
+  .row
+    .col-md-3
+      .form-group.has-feedback
+        .input-group.date#start_date_group
+          span.input-group-addon
+            span.glyphicon.glyphicon-calendar
+          input.form-control#start_date type="text" data-date-format="YYYY-MM-DD" name="derby_event[start_date]" placeholder="Start Date"
+          span.glyphicon.glyphicon-asterisk.form-control-feedback
+    .col-md-3
+      .form-group.has-feedback
+        .input-group.date#start_time_group
+          span.input-group-addon
+            span.glyphicon.glyphicon-time
+          input.form-control#start_time type="text" data-date-format="h:mm A" name="derby_event[start_time]" placeholder="Start Time"
+          span.glyphicon.glyphicon-asterisk.form-control-feedback
+  .row
+    .col-md-3
+      .form-group
+        .input-group.date#end_date_group
+          span.input-group-addon
+            span.glyphicon.glyphicon-calendar
+          input.form-control#end_date type="text" data-date-format="YYYY-MM-DD" name="derby_event[end_date]" placeholder="End Date"
+    .col-md-3
+      .form-group
+        .input-group.date#end_time_group
+          span.input-group-addon
+            span.glyphicon.glyphicon-time
+          input.form-control#end_time type="text" data-date-format="h:mm A" name="derby_event[end_time]" placeholder="End Time"
+  script
+    |
+      $(function () {
+        $('#start_date_group').datetimepicker({
+          format: 'MM/dd/YYYY'
+        });
+        $('#start_time_group').datetimepicker({
+          stepping: 15,
+          format: 'h:mm a'
+        });
+        $('#end_date_group').datetimepicker({
+          format: 'MM/dd/YYYY'
+        });
+        $('#start_date_group').on('dp.change', function (e) {
+          $('#end_date_group').data("DateTimePicker").minDate(e.date);
+        });
+        $('#end_time_group').datetimepicker({
+          stepping: 15,
+          format: 'h:mm a'
+        });
+      });
+  .row
+    .col-md-6
+      = f.text_field :venue, hide_label: true, placeholder: "Venue"
+  .row
+    .col-md-3
+      = f.text_field :city, hide_label: true, placeholder: "City", icon: "asterisk"
+  .row
+    .col-md-3
+      = f.text_field :state, hide_label: true, placeholder: "State/Province", icon: "asterisk"
+  .row
+    .col-md-2
+      = f.text_field :postal_code, hide_label: true, placeholder: "Postal Code"
+  .row
+    .col-md-2
+      = f.text_field :country, hide_label: true, placeholder: "Country", icon: "asterisk"
+  .row
+    br
+  .row
+    .col-md-3
+      = f.text_field :host, hide_label: true, placeholder: "Host League"
+  .row
+    .col-md-3
+      = f.url_field :website, hide_label: true, placeholder: "Website URL"
+  .row
+    .col-md-3
+      = f.email_field :event_contact, hide_label: true, placeholder: "Event Contact Email"
+  .row
+    .col-md-2
+      = f.text_field :cost, hide_label: true, placeholder: "Cost"
+  .row
+    br
+  .row
+    .col-md-12
+      h4 Rulesets
+      = f.form_group :ruleset
+        = f.check_box :mrda, label: "MRDA", inline: true
+        = f.check_box :wftda, label: "WFTDA", inline: true
+        = f.check_box :jrda, label: "JRDA", inline: true
+        = f.check_box :made, label: "MADE", inline: true
+        = f.check_box :usars, label: "USARS", inline:true
+        = f.check_box :rdcl, label: "RDCL", inline:true
+  .row
+    .col-md-12
+      h4 Genders
+      = f.form_group :gender
+        = f.check_box :female, label: "Female", inline: true
+        = f.check_box :male, label: "Male", inline: true
+        = f.check_box :coed, label: "COED", inline: true
+  .row
+    .col-md-12
+      = f.check_box :preregistration, label: "Preregistration available?"
+  .row
+    .col-md-12
+      = f.check_box :spectators, label: "Spectators allowed?"
+  .row
+    br
+  .row
+    .col-md-6
+      = f.text_area :general_info, label: "Event Details (track type, hotel/parking info, etc.)", hide_label: true, placeholder: "Event Details (track type, hotel/parking info, etc.)"
+  .row
+    br
+  .row
+    .col-md-1
+      a.btn.btn-default role="button" href="#{root_path}" Cancel
+    .col-md-1
+      .actions = f.submit "Submit"
+  .row
+    br
+
