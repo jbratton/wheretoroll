@@ -24,6 +24,7 @@ class DerbyEventsController < ApplicationController
   # POST /derby_events
   # POST /derby_events.json
   def create
+    derby_event_params[:start_date]
     @derby_event = DerbyEvent.new(derby_event_params)
 
     respond_to do |format|
@@ -70,8 +71,19 @@ class DerbyEventsController < ApplicationController
       @derby_event = DerbyEvent.find(params[:id])
     end
 
+    def format_date_for_db(form_date)
+      month, day, year = form_date.split('/')
+      "#{year}-#{month}-#{day}"
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def derby_event_params
-      params.require(:derby_event).permit(:name, :start_date, :start_time, :end_date, :end_time, :venue, :city, :state, :postal_code, :country, :host, :website, :event_contact, :cost, :mrda, :wftda, :jrda, :made, :usars, :rdcl, :female, :male, :coed, :preregistration, :spectators, :general_info, :submission_contact)
+      event_params = params.require(:derby_event).permit(:name, :start_date, :start_time, :end_date, :end_time, :venue, :city, :state, :postal_code, :country, :host, :website, :event_contact, :cost, :mrda, :wftda, :jrda, :made, :usars, :rdcl, :female, :male, :coed, :preregistration, :spectators, :general_info, :submission_contact)
+      [:start_date, :end_date].each do |date_field|
+        if !event_params[date_field].blank?
+          event_params[date_field] = format_date_for_db(event_params[date_field])
+        end
+      end
+      event_params
     end
 end

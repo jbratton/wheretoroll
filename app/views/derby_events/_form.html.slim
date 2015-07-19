@@ -20,7 +20,7 @@
         .input-group.date#start_date_group
           span.input-group-addon
             span.glyphicon.glyphicon-calendar
-          input.form-control#start_date type="text" data-date-format="YYYY-MM-DD" name="derby_event[start_date]" placeholder="Start Date"
+          input.form-control#start_date type="text" name="derby_event[start_date]" placeholder="Start Date"
           span.glyphicon.glyphicon-asterisk.form-control-feedback
     .col-md-3
       .form-group
@@ -34,7 +34,7 @@
         .input-group.date#end_date_group
           span.input-group-addon
             span.glyphicon.glyphicon-calendar
-          input.form-control#end_date type="text" data-date-format="YYYY-MM-DD" name="derby_event[end_date]" placeholder="End Date"
+          input.form-control#end_date type="text" name="derby_event[end_date]" placeholder="End Date"
     .col-md-3
       .form-group
         .input-group.date#end_time_group
@@ -45,14 +45,14 @@
     |
       $(function () {
         $('#start_date_group').datetimepicker({
-          format: 'MM/dd/YYYY'
+          format: 'MM/DD/YYYY'
         });
         $('#start_time_group').datetimepicker({
           stepping: 15,
           format: 'h:mm a'
         });
         $('#end_date_group').datetimepicker({
-          format: 'MM/dd/YYYY'
+          format: 'MM/DD/YYYY'
         });
         $('#start_date_group').on('dp.change', function (e) {
           $('#end_date_group').data("DateTimePicker").minDate(e.date);
