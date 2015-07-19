@@ -16,7 +16,7 @@ html
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a.navbar-brand href="#{root_path}" =image_tag('w2r-round-150x150.png', size: '150x150', alt: 'Where to Roll', class: 'brand-icon')
+          a.navbar-brand href="#{root_path}" =image_tag('w2r-round-150x150.png', size: '100x100', alt: 'Where to Roll', class: 'brand-icon')
 
         #home-navbar.collapse.navbar-collapse
           /- if current_page? root_path
@@ -25,7 +25,7 @@ html
                 input.form-control type="text" placeholder="Search"
               button.btn.btn-default type="submit"
                 span.glyphicon.glyphicon-search aria-hidden="true" aria-label="Submit"
-          ul.nav.navbar-nav.navbar
+          ul.nav.navbar-nav
             li class=('active' if current_page? root_path)
               a href=root_path
                 | Events

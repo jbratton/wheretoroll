@@ -28,13 +28,16 @@ class DerbyEventsController < ApplicationController
 
     respond_to do |format|
       if @derby_event.save
-        format.html { redirect_to @derby_event, notice: 'Derby event was successfully created.' }
+        format.html { redirect_to thanks_path }
         format.json { render :show, status: :created, location: @derby_event }
       else
         format.html { render :new }
         format.json { render json: @derby_event.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def thanks
   end
 
   # PATCH/PUT /derby_events/1

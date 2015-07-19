@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get '/about', to: 'static_pages#about', as: 'about'
   get '/submit', to: 'derby_events#new', as: 'submit'
   post '/submit', to: 'derby_events#create'
+  get '/thanks', to: 'derby_events#thanks', as: 'thanks'
 
   resources :derby_events
   # The priority is based upon order of creation: first created -> highest priority.

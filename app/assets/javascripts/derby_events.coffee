@@ -4,7 +4,7 @@
 $(document).ready( ->
   $('#new_derby_event').bootstrapValidator({
     feedbackIcons: false,
-    submitButtons: '#submit_button',
+    submitButtons: "[name='commit']",
     fields: {
       "derby_event[submission_contact]": {
         validators: {
