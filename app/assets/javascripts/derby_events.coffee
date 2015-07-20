@@ -45,13 +45,6 @@ $(document).ready( ->
           }
         }
       },
-      "derby_event[state]": {
-        validators: {
-          notEmpty: {
-            message: "The state or province or your country's equivalent is required."
-          }
-        }
-      },
       "derby_event[country]": {
         validators: {
           notEmpty: {
