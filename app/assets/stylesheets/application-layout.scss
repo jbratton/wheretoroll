@@ -1,7 +1,23 @@
-body {
+html {
   font-family: 'Didact Gothic', 'Century Gothic', 'CenturyGothic', 'AppleGothic', sans-serif;
   padding-top: $navbar-height;
   padding-bottom: 70px;
+}
+
+.active {
+  opacity: 0.65;
+}
+
+nav {
+  background: image-url("skates-background.png") 0 210px;
+  background-size: cover;
+  opacity: 1.0;
+}
+
+footer {
+  background: image-url("skates-background.png") 0 110px;
+  background-size: cover;
+  opacity: 1.0;
 }
 
 .navbar-brand,

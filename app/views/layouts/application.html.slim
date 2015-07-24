@@ -2,11 +2,35 @@ doctype html
 html
   head
     meta name="viewport" content="width=device-width, initial-scale=1"
+    meta name="description" content="Where to Roll is your one-stop search for open roller derby scrimmages and clinics around the world."
+
+    / this is for facebook
+    meta property="og:url" content="http://www.wheretoroll.com/"
+    meta property="og:description" content="Where to Roll is your one-stop search for open roller derby scrimmages and clinics around the world."
+    meta property="og:title" content="Where to Roll"
+    meta property="og:site_name" content="Where to Roll"
+    meta property="og:image" content=image_url("og-logo.png")
+    meta property="og:image:type" content="image/png"
+    meta property="og:image:width" content="1200"
+    meta property="og:image:height" content="630"
+
+    meta charset="utf-8"
+
     title Where to Roll
+
     link href="https://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet" type="text/css"
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
+    / this is for google analytics
+    script
+      |
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+          ga('create', 'UA-64649704-1', 'auto');
+          ga('send', 'pageview');
   body
     nav.navbar.navbar-default.navbar-fixed-top
       .container-fluid
@@ -26,7 +50,7 @@ html
               button.btn.btn-default type="submit"
                 span.glyphicon.glyphicon-search aria-hidden="true" aria-label="Submit"
           ul.nav.navbar-nav
-            li class=('active' if current_page? root_path)
+            /li class=('active' if current_page? root_path)
               a href=root_path
                 | Events
                 - if current_page? root_path
