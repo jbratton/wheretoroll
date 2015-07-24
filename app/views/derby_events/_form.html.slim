@@ -7,10 +7,18 @@
           li = message
 
   .row
+    .col-md-8
+      p 
+      | Where to Roll is your one-stop search for open roller derby scrimmages and clinics around the world. Submitted events should be open for participation to roller derby skaters from any league. If you have any questions or concerns about your event's eligibility, please contact us by 
+      a href="mailto:info@wheretoroll.com" email
+      |  or 
+      a href="https://www.facebook.com/wheretoroll" Facebook
+      | .
+  .row
     br
   .row
     .col-md-6
-      = f.email_field :submission_contact, label: "Submitter's (your) Email", hide_label: true, placeholder: "Submitter's (your) Email", help: "We promise only to use this to contact you regarding this submission.", icon: "asterisk"
+      = f.email_field :submission_contact, label: "Your Email Address", hide_label: true, placeholder: "Your Email Address", help: "We promise only to use this to contact you regarding this submission.", icon: "asterisk"
   .row
     .col-md-6
       = f.text_field :name, label: "Event Name", hide_label: true, placeholder: "Event Name", icon: "asterisk"
@@ -64,7 +72,7 @@
       });
   .row
     .col-md-6
-      = f.text_field :venue, hide_label: true, placeholder: "Venue"
+      = f.text_field :venue, hide_label: true, placeholder: "Venue Name and/or Street Address"
   .row
     .col-md-3
       = f.text_field :city, hide_label: true, placeholder: "City", icon: "asterisk"
@@ -80,11 +88,11 @@
   .row
     br
   .row
-    .col-md-3
-      = f.text_field :host, hide_label: true, placeholder: "Host League"
+    .col-md-4
+      = f.text_field :host, hide_label: true, placeholder: "Host League, Coach, or Organization"
   .row
     .col-md-3
-      = f.url_field :website, hide_label: true, placeholder: "Website URL"
+      = f.url_field :website, hide_label: true, placeholder: "Link to Online Event Details"
   .row
     .col-md-3
       = f.email_field :event_contact, hide_label: true, placeholder: "Event Contact Email"
@@ -92,10 +100,9 @@
     .col-md-2
       = f.text_field :cost, hide_label: true, placeholder: "Cost"
   .row
-    br
-  .row
     .col-md-12
       h4 Rulesets
+      p Please select all rulesets that will be played at this event.
       = f.form_group :ruleset
         = f.check_box :mrda, label: "MRDA", inline: true
         = f.check_box :wftda, label: "WFTDA", inline: true
@@ -106,10 +113,11 @@
   .row
     .col-md-12
       h4 Genders
+      p Please select all that apply to this event.
       = f.form_group :gender
         = f.check_box :female, label: "Female", inline: true
         = f.check_box :male, label: "Male", inline: true
-        = f.check_box :coed, label: "COED", inline: true
+        = f.check_box :coed, label: "Co-Ed", inline: true
   .row
     .col-md-12
       = f.check_box :preregistration, label: "Preregistration available?"
@@ -117,10 +125,10 @@
     .col-md-12
       = f.check_box :spectators, label: "Spectators allowed?"
   .row
-    br
-  .row
     .col-md-6
-      = f.text_area :general_info, label: "Event Details (track type, hotel/parking info, etc.)", hide_label: true, placeholder: "Event Details (track type, hotel/parking info, etc.)"
+      h4 Event Details
+      p Please include any details not already covered in this submission form. This could include links to sign-up forms, specifics/theme of your event, hotel/parking information, etc.
+      = f.text_area :general_info, hide_label: true, rows: 5
   .row
     br
   .row
