@@ -1,11 +1,16 @@
-.container
-  h2 Where to Roll
-  - @derby_events.each do |derby_event|
-    row
-      .col-md-3.col-md-offset-1 = derby_event.name
-      .col-md-1 = derby_event.start_datetime
-      .col-md-1 = derby_event.country
-      .col-md-1 = derby_event.city
-      .col-md-2 = derby_event.rulesets
-      .col-md-2 = derby_event.genders
+.container-fluid
+  .row
+    br
+  .row
+    .col-md-8.col-md-offset-2
+      p Where to Roll is your one-stop search for open roller derby scrimmages and clinics around the world!
+      p The goal of the Where To Roll team is to provide an easy to use, up-to-date database to make your already hectic derby life easier. This searchable database will include scrimmage and clinic opportunities from all over the world for all skill levels, ages, and genders.
+      p
+        | We are now taking submissions from Women's, Men's and Junior leagues for open mashups, scrimmages and clinics worldwide. If you have an open scrimmage or clinic, please 
+        a href=submit_path submit it to us
+        |. We will enter your submissions into the database, run a few more tests, and we should be live fairly soon!
+      p
+        | In the meantime, please follow us on 
+        a href="https://www.facebook.com/wheretoroll" Facebook
+        |  to keep tabs on our progress as we get up and rolling.
 
