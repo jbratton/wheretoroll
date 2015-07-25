@@ -84,7 +84,10 @@
       = f.text_field :postal_code, hide_label: true, placeholder: "Postal Code"
   .row
     .col-md-2
-      = f.text_field :country, hide_label: true, placeholder: "Country", icon: "asterisk"
+      .form-group
+        = f.label :country, "Country", { class: 'control-label' }
+        span.glyphicon.glyphicon-asterisk
+        = f.country_select :country, { priority_countries: ["AU", "AR", "BS", "BE", "BR", "CA", "CL", "CO", "DK", "FI", "FR", "DE", "GR", "IE", "IT", "JP", "MX", "NL", "NZ", "NO", "PT", "PR", "ZA", "ES", "SE", "CH", "GB", "UM", "US", "VG", "VI"] }, class: 'form-control'
   .row
     br
   .row
@@ -92,7 +95,7 @@
       = f.text_field :host, hide_label: true, placeholder: "Host League, Coach, or Organization"
   .row
     .col-md-3
-      = f.url_field :website, hide_label: true, placeholder: "Link to Online Event Details"
+      = f.text_field :website, hide_label: true, placeholder: "Link to Online Event Details"
   .row
     .col-md-3
       = f.email_field :event_contact, hide_label: true, placeholder: "Event Contact Email"
@@ -173,13 +176,6 @@
               validators: {
                 notEmpty: {
                   message: "Please tell us the city the event will be in."
-                }
-              }
-            },
-            "derby_event[state]": {
-              validators: {
-                notEmpty: {
-                  message: "The state or province or your country's equivalent is required."
                 }
               }
             },
