@@ -5,3 +5,23 @@
   color: red;
 }
 
+.index-container {
+  width: 100vw;
+  height: 100vh;
+  padding-top: 5px;
+  margin: auto;
+  background-image: image-url("skates-background.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.logo-container {
+  width: 75%;
+  height: 50%;
+  margin: auto;
+  background-image: image-url("w2r-1305x1305.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+}
