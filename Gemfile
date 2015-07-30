@@ -11,6 +11,7 @@ gem 'bootstrap_form'
 gem 'bootstrap-validator-rails'
 gem 'autoprefixer-rails'
 gem 'country_select', github: 'stefanpenner/country_select'
+gem 'jquery-turbolinks'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'

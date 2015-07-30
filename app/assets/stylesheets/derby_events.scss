@@ -1,25 +1,42 @@
 // Place all the styles related to the DerbyEvents controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.headerSortDown:after {
+  content: "▼";
+}
+
+.headerSortUp:after {
+  content: "▲";
+}
+
 .glyphicon-asterisk {
   color: red;
 }
 
+.event-list {
+  opacity: 0.8;
+  background: #fff;
+}
+
 .index-container {
+  padding-bottom: 50px;
+}
+
+body {
   width: 100vw;
   height: 100vh;
-  padding-top: 5px;
-  margin: auto;
   background-image: image-url("skates-background.png");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+  background-attachment: fixed;
 }
 
 .logo-container {
   width: 75%;
   height: 50%;
   margin: auto;
+  margin-top: 5px;
   background-image: image-url("w2r-1305x1305.png");
   background-repeat: no-repeat;
   background-position: center center;

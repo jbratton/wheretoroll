@@ -1,4 +1,4 @@
-= bootstrap_form_for @derby_event, url: submit_path do |f|
+= bootstrap_form_for @derby_event do |f|
   - if @derby_event.errors.any?
     #error_explanation
       h2 = "#{pluralize(@derby_event.errors.count, "error")} prohibited this event from being saved:"
