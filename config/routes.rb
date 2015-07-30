@@ -1,8 +1,17 @@
 Rails.application.routes.draw do
+  devise_for :admins, skip: :registrations
+
   get '/about', to: 'static_pages#about', as: 'about'
+
   get '/submit', to: 'derby_events#new', as: 'submit'
   post '/submit', to: 'derby_events#create'
+  patch '/submit', to: 'derby_events#update'
+
   get '/thanks', to: 'derby_events#thanks', as: 'thanks'
+
+  devise_scope :admin do
+    get '/sign_in', to: 'devise/sessions#new', as: 'sign_in'
+  end
 
   resources :derby_events
   # The priority is based upon order of creation: first created -> highest priority.

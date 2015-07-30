@@ -4,12 +4,17 @@ class DerbyEventsController < ApplicationController
   # GET /derby_events
   # GET /derby_events.json
   def index
-    @derby_events = DerbyEvent.where(approved: true, deleted: false)
+    if admin_signed_in?
+      @derby_events = DerbyEvent.all
+    else
+      @derby_events = DerbyEvent.where(approved: true, deleted: false)
+    end
   end
 
   # GET /derby_events/1
   # GET /derby_events/1.json
   def show
+    redirect_to root_path
   end
 
   # GET /derby_events/new
@@ -19,6 +24,7 @@ class DerbyEventsController < ApplicationController
 
   # GET /derby_events/1/edit
   def edit
+    redirect_to root_path unless admin_signed_in?
   end
 
   # POST /derby_events
@@ -44,6 +50,7 @@ class DerbyEventsController < ApplicationController
   # PATCH/PUT /derby_events/1
   # PATCH/PUT /derby_events/1.json
   def update
+    redirect_to root_path unless admin_signed_in?
     respond_to do |format|
       if @derby_event.update(derby_event_params)
         format.html { redirect_to @derby_event, notice: 'Derby event was successfully updated.' }
@@ -58,6 +65,7 @@ class DerbyEventsController < ApplicationController
   # DELETE /derby_events/1
   # DELETE /derby_events/1.json
   def destroy
+    redirect_to root_path unless admin_signed_in?
     @derby_event.destroy
     respond_to do |format|
       format.html { redirect_to derby_events_url, notice: 'Derby event was successfully destroyed.' }

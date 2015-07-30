@@ -68,7 +68,12 @@ html
                 - if current_page? about_path
                   span.sr-only
                     | (current)
+            -if admin_signed_in?
+              li
+                = link_to destroy_admin_session_path, method: :delete
+                  | Sign Out
 
+    = render 'layouts/messages'
     == yield
 
     footer.navbar.navbar-default.navbar-fixed-bottom
