@@ -1,1 +1,1 @@
-json.extract! @derby_event, :id, :name, :start_date, :end_date, :venue, :city, :state, :zip_code, :country, :web_site, :contact, :host, :cost, :ruleset, :preregistration, :spectators, :created_at, :updated_at
+json.extract! @derby_event, :id, :name, :start_date, :start_time, :end_date, :end_time, :display_date, :venue, :city, :state, :postal_code, :country, :country_name, :host, :website, :event_contact, :cost, :rulesets, :genders, :preregistration, :spectators, :general_info

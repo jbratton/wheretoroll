@@ -19,12 +19,12 @@ class DerbyEvent < ActiveRecord::Base
   def rulesets
     ['mrda', 'wftda', 'jrda', 'made', 'usars', 'rdcl'].map do |ruleset|
       send(ruleset) ? ruleset.upcase : nil
-    end.join(', ')
+    end.compact.join(', ')
   end
 
   def genders
-    ['Male', 'Female', 'COED'].map do |gender|
-      send(gender.downcase) ? gender : nil
-    end.join(', ')
+    ['Male', 'Female', 'Co-Ed'].map do |gender|
+      send(gender.downcase.gsub(/[^a-z]/, '')) ? gender : nil
+    end.compact.join(', ')
   end
 end

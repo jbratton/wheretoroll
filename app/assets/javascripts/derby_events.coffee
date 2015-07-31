@@ -5,4 +5,9 @@ $(document).ready( ->
   $("#event-table").tablesorter({
     sortList: [[0,0]]
   })
+
+  $("tr[data-event-id]").on("click", ->
+    # ajax json for event id $(this).data('event-id') and populate #event-modal fields
+    document.location = $(this).data('href')
+  )
 )

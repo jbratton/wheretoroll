@@ -1,0 +1,33 @@
+.modal.fade#event-modal tabindex="-1" role="dialog"
+  .modal-dialog role="document"
+    .modal-content
+      .modal-header
+        button.close type="button" data-dismiss="modal" aria-label="Close"
+          span aria-hidden="true" &times;
+        h4.modal-title#event-name
+      .modal-body
+
+.panel.panel-default.col-md-10.col-md-offset-1.event-list
+  - if @derby_events.empty?
+    p.text-center No events found. Please let us know what's going on!
+  - else
+    .table-responsive
+      table.table.table-hover.table-condensed#event-table
+        thead
+          tr
+            th Date
+            th Event
+            th City
+            th State
+            th Country
+        tbody
+          - @derby_events.each do |event|
+            tr data-toggle="modal" data-target="#event-modal" data-event-id=event.id
+              td = event.display_date
+              td = event.name
+              td = event.city
+              td = event.state
+              td = event.country_name
+              - if admin_signed_in?
+                td = link_to "Edit", edit_derby_event_path(event)
+
