@@ -35,6 +35,8 @@ $(document).ready( ->
 
     if data.html_info
       $("#event-info").html("<h5><u>Other Event Information</u></h5><p>" + data.html_info + "</p>")
+    else
+      $("#event-info").html("")
 
     $("#event-share-link").html('Shareable link to this event: <a href="http://www.wheretoroll.com/?shared_event=' + data.id + '">http://www.wheretoroll.com/?shared_event=' + data.id + "</a>")
       
