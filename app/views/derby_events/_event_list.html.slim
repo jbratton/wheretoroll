@@ -4,9 +4,7 @@
       .modal-header
         button.close type="button" data-dismiss="modal" aria-label="Close"
           span aria-hidden="true" &times;
-        h4.modal-title
-          span#event-name
-          span.small#event-date
+        h4.modal-title#event-name
       .modal-body
         p#event-host
         table.table.table-condensed.borderless
@@ -38,6 +36,8 @@
               td Spectators allowed?
               td#event-spectators
         span#event-info
+      .modal-footer
+        p.text-left.small#event-share-link
 
 .panel.panel-default.col-md-10.col-md-offset-1.event-list
   - if @derby_events.empty?

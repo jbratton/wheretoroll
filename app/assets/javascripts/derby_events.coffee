@@ -12,7 +12,6 @@ $(document).ready( ->
       title_html = data.name
 
     $("#event-name").html(title_html)
-    $("#event-date").text(" (" + data.display_date + ")")
 
     $("#event-host").text("Hosted by " + data.host)
 
@@ -36,6 +35,8 @@ $(document).ready( ->
 
     if data.html_info
       $("#event-info").html("<h5><u>Other Event Information</u></h5><p>" + data.html_info + "</p>")
+
+    $("#event-share-link").html('Shareable link to this event: <a href="http://www.wheretoroll.com/?shared_event=' + data.id + '">http://www.wheretoroll.com/?shared_event=' + data.id + "</a>")
       
   show_event_modal = (event_id) ->
     $.ajax("derby_events/" + event_id + ".json")
@@ -72,4 +73,11 @@ $(document).ready( ->
   $("#start_date_group").on("dp.change", (e) ->
     $("#end_date_group").data("DateTimePicker").minDate(e.date)
   )
+
+  # check URL for shared_event query string parameter
+  # if it's there, show the modal for that event
+  match_array = window.location.search.match(/shared_event=(\d+)/)
+  if match_array
+    show_event_modal(match_array[1])
+    $("#event-modal").modal('show')
 )
