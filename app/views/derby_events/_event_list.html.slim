@@ -4,12 +4,46 @@
       .modal-header
         button.close type="button" data-dismiss="modal" aria-label="Close"
           span aria-hidden="true" &times;
-        h4.modal-title#event-name
+        h4.modal-title
+          span#event-name
+          span.small#event-date
       .modal-body
+        p#event-host
+        table.table.table-condensed.borderless
+          col.label-column
+          col.data-column
+          tbody
+            tr
+              td Date &amp; Time
+              td#event-datetime
+            tr
+              td Location
+              td#event-location
+            tr
+              td Rulesets
+              td#event-rulesets
+            tr
+              td Genders
+              td#event-genders
+            tr
+              td Cost
+              td#event-cost
+            tr
+              td Contact
+              td#event-contact
+            tr
+              td Preregistration available?
+              td#event-preregistration
+            tr
+              td Spectators allowed?
+              td#event-spectators
+        span#event-info
 
 .panel.panel-default.col-md-10.col-md-offset-1.event-list
   - if @derby_events.empty?
-    p.text-center No events found. Please let us know what's going on!
+    p.text-center No events found. Have one to share? 
+      a href=submit_path
+        | Submit it!
   - else
     .table-responsive
       table.table.table-hover.table-condensed#event-table

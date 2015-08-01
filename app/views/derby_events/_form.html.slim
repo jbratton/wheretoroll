@@ -28,48 +28,27 @@
         .input-group.date#start_date_group
           span.input-group-addon
             span.glyphicon.glyphicon-calendar
-          input.form-control#start_date type="text" name="derby_event[start_date]" placeholder="Start Date"
+          input.form-control#start_date type="text" name="derby_event[start_date]" placeholder="Start Date" value="#{@derby_event.try(:start_date).present? ? @derby_event.start_date.strftime("%m/%d/%Y") : ""}"
           span.glyphicon.glyphicon-asterisk.form-control-feedback
     .col-md-3
       .form-group
         .input-group.date#start_time_group
           span.input-group-addon
             span.glyphicon.glyphicon-time
-          input.form-control#start_time type="text" data-date-format="h:mm A" name="derby_event[start_time]" placeholder="Start Time"
+          input.form-control#start_time type="text" data-date-format="h:mm A" name="derby_event[start_time]" placeholder="Start Time" value="#{@derby_event.try(:start_time).present? ? @derby_event.start_time.strftime("%l:%M %p") : ""}"
   .row
     .col-md-3
       .form-group
         .input-group.date#end_date_group
           span.input-group-addon
             span.glyphicon.glyphicon-calendar
-          input.form-control#end_date type="text" name="derby_event[end_date]" placeholder="End Date"
+          input.form-control#end_date type="text" name="derby_event[end_date]" placeholder="End Date" value="#{@derby_event.try(:end_date).present? ? @derby_event.end_date.strftime("%m/%d/%Y") : ""}"
     .col-md-3
       .form-group
         .input-group.date#end_time_group
           span.input-group-addon
             span.glyphicon.glyphicon-time
-          input.form-control#end_time type="text" data-date-format="h:mm A" name="derby_event[end_time]" placeholder="End Time"
-  script
-    |
-      $(function () {
-        $('#start_date_group').datetimepicker({
-          format: 'MM/DD/YYYY'
-        });
-        $('#start_time_group').datetimepicker({
-          stepping: 15,
-          format: 'h:mm a'
-        });
-        $('#end_date_group').datetimepicker({
-          format: 'MM/DD/YYYY'
-        });
-        $('#start_date_group').on('dp.change', function (e) {
-          $('#end_date_group').data("DateTimePicker").minDate(e.date);
-        });
-        $('#end_time_group').datetimepicker({
-          stepping: 15,
-          format: 'h:mm a'
-        });
-      });
+          input.form-control#end_time type="text" data-date-format="h:mm A" name="derby_event[end_time]" placeholder="End Time" value="#{@derby_event.try(:end_time).present? ? @derby_event.end_time.strftime("%l:%M %p") : ""}"
   .row
     .col-md-6
       = f.text_field :venue, hide_label: true, placeholder: "Venue Name and/or Street Address"
@@ -127,6 +106,10 @@
   .row
     .col-md-12
       = f.check_box :spectators, label: "Spectators allowed?"
+  - if admin_signed_in?
+    .row
+      .col-md-12
+        = f.check_box :approved, label: "Approved?", help: "Approved events will appear for all users on the main site."
   .row
     .col-md-6
       h4 Event Details

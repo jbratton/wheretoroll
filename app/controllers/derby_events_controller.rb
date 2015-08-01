@@ -7,7 +7,7 @@ class DerbyEventsController < ApplicationController
     if admin_signed_in?
       @derby_events = DerbyEvent.all
     else
-      @derby_events = DerbyEvent.where(approved: true, deleted: false)
+      @derby_events = DerbyEvent.where(approved: true, deleted: false).where("start_date >= ? OR end_date >= ?", Date.today, Date.today)
     end
   end
 
@@ -59,7 +59,7 @@ class DerbyEventsController < ApplicationController
     redirect_to root_path unless admin_signed_in?
     respond_to do |format|
       if @derby_event.update(derby_event_params)
-        format.html { redirect_to @derby_event, notice: 'Derby event was successfully updated.' }
+        format.html { redirect_to root_path, notice: 'Event was successfully updated.' }
         format.json { render :show, status: :ok, location: @derby_event }
       else
         format.html { render :edit }
