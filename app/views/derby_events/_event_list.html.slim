@@ -61,7 +61,8 @@
 
 .panel.panel-default.col-md-10.col-md-offset-1.event-list
   - if @derby_events.empty?
-    p.text-center No events found. Have one to share? 
+    p.text-center
+      |No events found. Have one to share? 
       a href=submit_path Submit it!
   - else
     .table-responsive
