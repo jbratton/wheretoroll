@@ -46,6 +46,6 @@ class DerbyEvent < ActiveRecord::Base
   end
 
   def html_info
-    general_info && general_info.gsub(/\r?\n/, "<br>")
+    general_info.gsub(/\r?\n/, "<br>") if general_info
   end
 end
