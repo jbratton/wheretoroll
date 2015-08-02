@@ -4,38 +4,47 @@
       .modal-header
         button.close type="button" data-dismiss="modal" aria-label="Close"
           span aria-hidden="true" &times;
-        h4.modal-title#event-name
+        h3.modal-title#event-name
       .modal-body
-        p#event-host
-        table.table.table-condensed.borderless
-          col.label-column
-          col.data-column
-          tbody
-            tr
-              td Date &amp; Time
-              td#event-datetime
-            tr
-              td Location
-              td#event-location
-            tr
-              td Rulesets
-              td#event-rulesets
-            tr
-              td Genders
-              td#event-genders
-            tr
-              td Cost
-              td#event-cost
-            tr
-              td Contact
-              td#event-contact
-            tr
-              td Preregistration available?
-              td#event-preregistration
-            tr
-              td Spectators allowed?
-              td#event-spectators
-        span#event-info
+        .container-fluid
+          .row
+            .col-md-3.col-md-offset-1 When
+            .col-md-7#event-datetime
+          .row
+            br
+          .row
+            .col-md-3.col-md-offset-1 Where
+            .col-md-7#event-location
+          .row
+            br
+          .row
+            .col-md-3.col-md-offset-1 Rulesets
+            .col-md-7#event-rulesets
+          .row
+            .col-md-3.col-md-offset-1 Genders
+            .col-md-7#event-genders
+          .row
+            br
+          .row
+            .col-md-3.col-md-offset-1 Cost
+            .col-md-7#event-cost
+          .row
+            br
+          .row
+            .col-md-3.col-md-offset-1 Preregistration?
+            .col-md-7#event-preregistration
+          .row
+            .col-md-3.col-md-offset-1 Spectators?
+            .col-md-7#event-spectators
+          .row
+            br
+          .row
+            .col-md-3.col-md-offset-1 Contact
+            .col-md-7#event-contact
+          .row
+            br
+          .row
+            .col-md-10.col-md-offset-1#event-info
       .modal-footer
         p.text-left.small#event-share-link
 

@@ -3,6 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).ready( ->
   
+  # only required name, start_date, city, country
   populate_event_modal = (data) ->
     preregistration = if data.preregistration then "Yes" else "No"
     spectators = if data.spectators then "Yes" else "No"
@@ -11,30 +12,35 @@ $(document).ready( ->
     else
       title_html = data.name
 
-    $("#event-name").html(title_html)
+    if data.host
+      title_html += '<br><span class="small">Hosted by ' + data.host + '</span>'
 
-    $("#event-host").text("Hosted by " + data.host)
+    $("#event-name").html(title_html)
 
     $("#event-datetime").text(data.display_datetime)
 
     location_html = ""
-    location_html += data.venue + "<br/>" if data.venue
-    location_html += data.city + ", " + data.state
+    location_html += data.venue + "<br>" if data.venue
+    location_html += data.city
+    location_html += ", " + data.state if data.state
     location_html += " " + data.postal_code if data.postal_code
-    location_html += "<br/>" + data.country_name
+    location_html += "<br>" + data.country_name
     $("#event-location").html(location_html)
 
-    $("#event-rulesets").text(data.rulesets)
-    $("#event-genders").text(data.genders)
-    $("#event-cost").text(data.cost)
+    $("#event-rulesets").text(if data.rulesets == "" then "none specified" else data.rulesets)
+    $("#event-genders").text(if data.genders == "" then "none specified" else data.genders)
+    $("#event-cost").text(if data.cost == "" then "not specified" else data.cost)
 
-    $("#event-contact").html('<a href="mailto:' + data.event_contact + '">' + data.event_contact + "</a>")
+    if data.event_contact == ""
+      $("#event-contact").html("not specified")
+    else
+      $("#event-contact").html('<a href="mailto:' + data.event_contact + '">' + data.event_contact + "</a>")
 
     $("#event-preregistration").text(preregistration)
     $("#event-spectators").text(spectators)
 
     if data.html_info
-      $("#event-info").html("<h5><u>Other Event Information</u></h5><p>" + data.html_info + "</p>")
+      $("#event-info").html('<span>Other Information</span><div class="panel panel-default"><div class="panel-body">' + data.html_info + "</div></div>")
     else
       $("#event-info").html("")
 
