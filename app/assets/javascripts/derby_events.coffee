@@ -40,7 +40,7 @@ $(document).ready( ->
     $("#event-spectators").text(spectators)
 
     if data.html_info
-      $("#event-info").html('<span>Other Information</span><div class="panel panel-default"><div class="panel-body">' + data.html_info + "</div></div>")
+      $("#event-info").html('<span><strong>Other Information</strong></span><div class="panel panel-default"><div class="panel-body">' + data.html_info + "</div></div>")
     else
       $("#event-info").html("")
 
