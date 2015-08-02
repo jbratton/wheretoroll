@@ -1,12 +1,16 @@
 // Place all the styles related to the DerbyEvents controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.header:after {
+  content: "-";
+}
+
 .headerSortDown:after {
-  content: "▼";
+  content: "⬇︎";
 }
 
 .headerSortUp:after {
-  content: "▲";
+  content: "⬆︎";
 }
 
 .glyphicon-asterisk {
