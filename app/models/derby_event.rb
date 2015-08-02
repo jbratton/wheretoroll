@@ -20,7 +20,7 @@ class DerbyEvent < ActiveRecord::Base
     if start_time
       display_str << " #{start_time.strftime(TIME_FORMAT)}"
     end
-    if end_date != start_date
+    if end_date != start_date && !end_date.nil?
       display_str << " - #{end_date.strftime(DATE_FORMAT)}"
     end
     if end_time
