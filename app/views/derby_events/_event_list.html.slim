@@ -54,7 +54,10 @@
           .row
             .col-md-12#event-info
       .modal-footer
-        p.text-left.small#event-share-link
+        p
+          span.col-md-2.text-left#event-fb-share
+          span.col-md-10.text-right#event-share-link
+        
 
 .panel.panel-default.col-md-10.col-md-offset-1.event-list
   - if @derby_events.empty?

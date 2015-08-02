@@ -44,7 +44,8 @@ $(document).ready( ->
     else
       $("#event-info").html("")
 
-    $("#event-share-link").html('Shareable link to this event: <a href="http://www.wheretoroll.com/?shared_event=' + data.id + '">http://www.wheretoroll.com/?shared_event=' + data.id + "</a>")
+    $("#event-share-link").html(data.share_html)
+    $("#event-fb-share").html(data.fb_html)
       
   show_event_modal = (event_id) ->
     $.ajax("derby_events/" + event_id + ".json")
