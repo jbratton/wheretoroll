@@ -33,6 +33,15 @@ class DerbyEvent < ActiveRecord::Base
     display_str
   end
 
+  def location_html
+    lhtml = ''
+    lhtml << "#{venue}<br>" unless venue.empty?
+    lhtml << city
+    lhtml << ", #{state}" unless state.empty?
+    lhtml << " #{postal_code}" unless postal_code.empty?
+    lhtml << "<br>#{country_name}"
+  end
+
   def rulesets
     ['mrda', 'wftda', 'jrda', 'made', 'usars', 'rdcl'].map do |ruleset|
       send(ruleset) ? ruleset.upcase : nil

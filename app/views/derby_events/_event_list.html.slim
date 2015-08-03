@@ -1,63 +1,8 @@
 .modal.fade#event-modal tabindex="-1" role="dialog"
   .modal-dialog role="document"
-    .modal-content
-      .modal-header
-        button.close type="button" data-dismiss="modal" aria-label="Close"
-          span aria-hidden="true" &times;
-        h3.modal-title#event-name
+    .modal-content#event-modal-content
       .modal-body
-        .container-fluid
-          .row
-            .col-md-3
-              strong When
-            .col-md-9#event-datetime
-          .row
-            br
-          .row
-            .col-md-3
-              strong Where
-            .col-md-9#event-location
-          .row
-            br
-          .row
-            .col-md-3
-              strong Rulesets
-            .col-md-9#event-rulesets
-          .row
-            .col-md-3
-              strong Genders
-            .col-md-9#event-genders
-          .row
-            br
-          .row
-            .col-md-3
-              strong Cost
-            .col-md-9#event-cost
-          .row
-            br
-          .row
-            .col-md-3
-              strong Preregistration?
-            .col-md-9#event-preregistration
-          .row
-            .col-md-3
-              strong Spectators?
-            .col-md-9#event-spectators
-          .row
-            br
-          .row
-            .col-md-3
-              strong Contact
-            .col-md-9#event-contact
-          .row
-            br
-          .row
-            .col-md-12#event-info
-      .modal-footer
-        p
-          span.col-md-2.text-left#event-fb-share
-          span.col-md-10.text-right#event-share-link
-        
+        .h3 Loading...
 
 .panel.panel-default.col-md-10.col-md-offset-1.event-list
   - if @derby_events.empty?

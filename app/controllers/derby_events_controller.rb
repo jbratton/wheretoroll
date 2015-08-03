@@ -11,14 +11,15 @@ class DerbyEventsController < ApplicationController
     end
   end
 
+  # GET /derby_events/1
   # GET /derby_events/1.json
   def show
     if !admin_signed_in? && (@derby_event.deleted || !@derby_event.approved)
       redirect_to root_path
       return
     end
-    # only return json
     respond_to do |format|
+      format.html { render layout: false }
       format.json
     end
   end

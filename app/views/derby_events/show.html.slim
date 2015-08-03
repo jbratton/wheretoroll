@@ -1,51 +1,89 @@
-p#notice = notice
+.modal-header
+  button.close type="button" data-dismiss="modal" aria-label="Close"
+    span aria-hidden="true" &times;
+  h3.modal-title
+    - if !@derby_event.website.empty?
+      a href=@derby_event.website =@derby_event.name
+    - else
+      =@derby_event.name
+    - if !@derby_event.host.empty?
+      br
+      span.small
+        |Hosted by 
+        =@derby_event.host
+.modal-body
+  .container-fluid
+    .row
+      .col-md-3
+        strong When
+      .col-md-9
+        =@derby_event.display_datetime
+    .row
+      br
+    .row
+      .col-md-3
+        strong Where
+      .col-md-9
+        == @derby_event.location_html
+    .row
+      br
+    .row
+      .col-md-3
+        strong Rulesets
+      .col-md-9
+        = @derby_event.rulesets.empty? ? 'none specified' : @derby_event.rulesets
+    .row
+      .col-md-3
+        strong Genders
+      .col-md-9
+        = @derby_event.genders.empty? ? 'none specified' : @derby_event.genders
+    .row
+      br
+    .row
+      .col-md-3
+        strong Cost
+      .col-md-9
+        = @derby_event.cost.empty? ? 'not specified' : @derby_event.cost
+    .row
+      br
+    .row
+      .col-md-3
+        strong Preregistration?
+      .col-md-9
+        = @derby_event.preregistration ? 'Yes' : 'No'
+    .row
+      .col-md-3
+        strong Spectators?
+      .col-md-9
+        = @derby_event.preregistration ? 'Yes' : 'No'
+    .row
+      br
+    .row
+      .col-md-3
+        strong Contact
+      .col-md-9
+        - if @derby_event.event_contact.empty?
+          |not specified
+        - else
+          a href="mailto:#{@derby_event.event_contact}"
+            = @derby_event.event_contact
+    .row
+      br
+    .row
+      .col-md-12
+        - if !@derby_event.general_info.empty?
+          span
+            strong Other Information
+          .panel.panel-default
+            .panel-body
+              = auto_link @derby_event.general_info.gsub(/\r?\n/, '<br>')
+.modal-footer
+  .row
+    .col-md-2.text-left
+      a href="https://www.facebook.com/sharer/sharer.php?u=#{root_url}?shared_event=#{@derby_event.id}"
+        = image_tag "fbshare.png"
+    .col-md-10.text-right
+      |Shareable link: 
+      a href="#{root_url}?shared_event=#{@derby_event.id}"
+        = "#{root_url}?shared_event=#{@derby_event.id}"
 
-p
-  strong Name:
-  = @derby_event.name
-p
-  strong Start datetime:
-  = @derby_event.start_datetime
-p
-  strong End datetime:
-  = @derby_event.end_datetime
-p
-  strong Venue:
-  = @derby_event.venue
-p
-  strong City:
-  = @derby_event.city
-p
-  strong State:
-  = @derby_event.state
-p
-  strong Zip code:
-  = @derby_event.zip_code
-p
-  strong Country:
-  = @derby_event.country
-p
-  strong Web site:
-  = @derby_event.web_site
-p
-  strong Contact:
-  = @derby_event.contact
-p
-  strong Host:
-  = @derby_event.host
-p
-  strong Cost:
-  = @derby_event.cost
-p
-  strong Ruleset:
-  = @derby_event.ruleset
-p
-  strong Preregistration:
-  = @derby_event.preregistration
-p
-  strong Spectators:
-  = @derby_event.spectators
-
-= link_to 'Edit', edit_derby_event_path(@derby_event)
-'|
-= link_to 'Back', derby_events_path
