@@ -20,13 +20,13 @@
             th State/Province
             th Country
         tbody
-          - @derby_events.each do |de|
-            tr data-toggle="modal" data-target="#event-modal" data-event-id=de.id class=(admin_signed_in? && de.approved ? 'success' : '')
-              td = de.start_date.strftime('%m/%d/%Y').html_safe unless start_date.nil?
-              td = de.name.html_safe
-              td = de.city.html_safe
-              td = de.state.html_safe
-              td = de.country_name.html_safe
+          - @derby_events.each do |event|
+            tr data-toggle="modal" data-target="#event-modal" data-event-id=event.id class=(admin_signed_in? && event.approved ? 'success' : '')
+              td = event.start_date.strftime('%m/%d/%Y').html_safe unless start_date.nil?
+              td = event.name.html_safe
+              td = event.city.html_safe
+              td = event.state.html_safe
+              td = event.country_name.html_safe
               - if admin_signed_in?
-                td = link_to "Edit", edit_derby_event_path(de)
+                td = link_to "Edit", edit_derby_event_path(event)
 
