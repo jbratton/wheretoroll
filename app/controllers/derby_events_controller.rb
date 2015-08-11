@@ -7,14 +7,14 @@ class DerbyEventsController < ApplicationController
     if admin_signed_in?
       @derby_events = DerbyEvent.all
     else
-      @derby_events = DerbyEvent.where(approved: true, deleted: false).where("start_date >= ? OR end_date >= ?", Date.today, Date.today)
+      @derby_events = DerbyEvent.viewable.where("start_date >= ? OR end_date >= ?", Date.today, Date.today)
     end
   end
 
   # GET /derby_events/1
   # GET /derby_events/1.json
   def show
-    if !admin_signed_in? && (@derby_event.deleted || !@derby_event.approved)
+    unless @derby_event.viewable? || admin_signed_in?
       redirect_to root_path
       return
     end
@@ -95,6 +95,7 @@ class DerbyEventsController < ApplicationController
     def derby_event_params
       event_params = params.require(:derby_event).permit(:name, :start_date, :start_time, :end_date, :end_time, :venue, :city, :state, :postal_code, :country, :host, :website, :event_contact, :cost, :mrda, :wftda, :jrda, :made, :usars, :rdcl, :female, :male, :coed, :preregistration, :spectators, :general_info, :submission_contact, :approved, :deleted)
       [:start_date, :end_date].each do |date_field|
+
         if !event_params[date_field].blank?
           event_params[date_field] = format_date_for_db(event_params[date_field])
         end

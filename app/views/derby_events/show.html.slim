@@ -9,7 +9,7 @@
     - if !@derby_event.host.empty?
       br
       span.small
-        |Hosted by 
+        |Hosted by
         =@derby_event.host
 .modal-body
   .container-fluid
@@ -31,12 +31,12 @@
       .col-md-3
         strong Rulesets
       .col-md-9
-        = @derby_event.rulesets.empty? ? 'none specified' : @derby_event.rulesets
+        = @derby_event.rulesets.empty? ? 'none specified' : @derby_event.rulesets.upcase.join(', ')
     .row
       .col-md-3
         strong Genders
       .col-md-9
-        = @derby_event.genders.empty? ? 'none specified' : @derby_event.genders
+        = @derby_event.genders.empty? ? 'none specified' : @derby_event.genders.join(', ')
     .row
       br
     .row
@@ -83,7 +83,7 @@
       a href="https://www.facebook.com/sharer/sharer.php?u=#{root_url}?shared_event=#{@derby_event.id}"
         = image_tag "fbshare.png"
     .col-md-10.text-right
-      |Shareable link: 
+      |Shareable link:
       a href="#{root_url}?shared_event=#{@derby_event.id}"
         = "#{root_url}?shared_event=#{@derby_event.id}"
 
