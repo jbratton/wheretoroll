@@ -1,0 +1,111 @@
+= form_for @open_practice do |f|
+  - if @open_practice.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@open_practice.errors.count, "error")} prohibited this open_practice from being saved:"
+      ul
+        - @open_practice.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :league_name
+    = f.text_field :league_name
+  .field
+    = f.label :league_website
+    = f.text_field :league_website
+  .field
+    = f.label :city
+    = f.text_field :city
+  .field
+    = f.label :state
+    = f.text_field :state
+  .field
+    = f.label :postal_code
+    = f.text_field :postal_code
+  .field
+    = f.label :country
+    = f.text_field :country
+  .field
+    = f.label :venue
+    = f.text_field :venue
+  .field
+    = f.label :cost
+    = f.text_field :cost
+  .field
+    = f.label :monday
+    = f.check_box :monday
+  .field
+    = f.label :monday_start
+    = f.time_select :monday_start
+  .field
+    = f.label :monday_end
+    = f.time_select :monday_end
+  .field
+    = f.label :tuesday
+    = f.check_box :tuesday
+  .field
+    = f.label :tuesday_start
+    = f.time_select :tuesday_start
+  .field
+    = f.label :tuesday_end
+    = f.time_select :tuesday_end
+  .field
+    = f.label :wednesday
+    = f.check_box :wednesday
+  .field
+    = f.label :wednesday_start
+    = f.time_select :wednesday_start
+  .field
+    = f.label :wednesday_end
+    = f.time_select :wednesday_end
+  .field
+    = f.label :thursday
+    = f.check_box :thursday
+  .field
+    = f.label :thursday_start
+    = f.time_select :thursday_start
+  .field
+    = f.label :thursday_end
+    = f.time_select :thursday_end
+  .field
+    = f.label :friday
+    = f.check_box :friday
+  .field
+    = f.label :friday_start
+    = f.time_select :friday_start
+  .field
+    = f.label :friday_end
+    = f.time_select :friday_end
+  .field
+    = f.label :saturday
+    = f.check_box :saturday
+  .field
+    = f.label :saturday_start
+    = f.time_select :saturday_start
+  .field
+    = f.label :saturday_end
+    = f.time_select :saturday_end
+  .field
+    = f.label :sunday
+    = f.check_box :sunday
+  .field
+    = f.label :sunday_start
+    = f.time_select :sunday_start
+  .field
+    = f.label :sunday_end
+    = f.time_select :sunday_end
+  .field
+    = f.label :venue
+    = f.text_field :venue
+  .field
+    = f.label :practice_contact
+    = f.text_field :practice_contact
+  .field
+    = f.label :submission_contact
+    = f.text_field :submission_contact
+  .field
+    = f.label :approved
+    = f.check_box :approved
+  .field
+    = f.label :deleted
+    = f.check_box :deleted
+  .actions = f.submit

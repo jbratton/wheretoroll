@@ -1,0 +1,2 @@
+module OpenPracticesHelper
+end

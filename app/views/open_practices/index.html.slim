@@ -1,0 +1,87 @@
+h1 Listing open_practices
+
+table
+  thead
+    tr
+      th League name
+      th League website
+      th City
+      th State
+      th Postal code
+      th Country
+      th Venue
+      th Cost
+      th Monday
+      th Monday start
+      th Monday end
+      th Tuesday
+      th Tuesday start
+      th Tuesday end
+      th Wednesday
+      th Wednesday start
+      th Wednesday end
+      th Thursday
+      th Thursday start
+      th Thursday end
+      th Friday
+      th Friday start
+      th Friday end
+      th Saturday
+      th Saturday start
+      th Saturday end
+      th Sunday
+      th Sunday start
+      th Sunday end
+      th Venue
+      th Practice contact
+      th Submission contact
+      th Approved
+      th Deleted
+      th
+      th
+      th
+
+  tbody
+    - @open_practices.each do |open_practice|
+      tr
+        td = open_practice.league_name
+        td = open_practice.league_website
+        td = open_practice.city
+        td = open_practice.state
+        td = open_practice.postal_code
+        td = open_practice.country
+        td = open_practice.venue
+        td = open_practice.cost
+        td = open_practice.monday
+        td = open_practice.monday_start
+        td = open_practice.monday_end
+        td = open_practice.tuesday
+        td = open_practice.tuesday_start
+        td = open_practice.tuesday_end
+        td = open_practice.wednesday
+        td = open_practice.wednesday_start
+        td = open_practice.wednesday_end
+        td = open_practice.thursday
+        td = open_practice.thursday_start
+        td = open_practice.thursday_end
+        td = open_practice.friday
+        td = open_practice.friday_start
+        td = open_practice.friday_end
+        td = open_practice.saturday
+        td = open_practice.saturday_start
+        td = open_practice.saturday_end
+        td = open_practice.sunday
+        td = open_practice.sunday_start
+        td = open_practice.sunday_end
+        td = open_practice.venue
+        td = open_practice.practice_contact
+        td = open_practice.submission_contact
+        td = open_practice.approved
+        td = open_practice.deleted
+        td = link_to 'Show', open_practice
+        td = link_to 'Edit', edit_open_practice_path(open_practice)
+        td = link_to 'Destroy', open_practice, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Open practice', new_open_practice_path

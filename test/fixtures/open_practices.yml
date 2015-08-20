@@ -1,0 +1,73 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  league_name: MyString
+  league_website: MyString
+  city: MyString
+  state: MyString
+  postal_code: MyString
+  country: MyString
+  venue: MyString
+  cost: MyString
+  monday: false
+  monday_start: 2015-08-19 21:10:47
+  monday_end: 2015-08-19 21:10:47
+  tuesday: false
+  tuesday_start: 2015-08-19 21:10:47
+  tuesday_end: 2015-08-19 21:10:47
+  wednesday: false
+  wednesday_start: 2015-08-19 21:10:47
+  wednesday_end: 2015-08-19 21:10:47
+  thursday: false
+  thursday_start: 2015-08-19 21:10:47
+  thursday_end: 2015-08-19 21:10:47
+  friday: false
+  friday_start: 2015-08-19 21:10:47
+  friday_end: 2015-08-19 21:10:47
+  saturday: false
+  saturday_start: 2015-08-19 21:10:47
+  saturday_end: 2015-08-19 21:10:47
+  sunday: false
+  sunday_start: 2015-08-19 21:10:47
+  sunday_end: 2015-08-19 21:10:47
+  venue: MyString
+  practice_contact: MyString
+  submission_contact: MyString
+  approved: false
+  deleted: false
+
+two:
+  league_name: MyString
+  league_website: MyString
+  city: MyString
+  state: MyString
+  postal_code: MyString
+  country: MyString
+  venue: MyString
+  cost: MyString
+  monday: false
+  monday_start: 2015-08-19 21:10:47
+  monday_end: 2015-08-19 21:10:47
+  tuesday: false
+  tuesday_start: 2015-08-19 21:10:47
+  tuesday_end: 2015-08-19 21:10:47
+  wednesday: false
+  wednesday_start: 2015-08-19 21:10:47
+  wednesday_end: 2015-08-19 21:10:47
+  thursday: false
+  thursday_start: 2015-08-19 21:10:47
+  thursday_end: 2015-08-19 21:10:47
+  friday: false
+  friday_start: 2015-08-19 21:10:47
+  friday_end: 2015-08-19 21:10:47
+  saturday: false
+  saturday_start: 2015-08-19 21:10:47
+  saturday_end: 2015-08-19 21:10:47
+  sunday: false
+  sunday_start: 2015-08-19 21:10:47
+  sunday_end: 2015-08-19 21:10:47
+  venue: MyString
+  practice_contact: MyString
+  submission_contact: MyString
+  approved: false
+  deleted: false

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :open_practices
   devise_for :admins, skip: :registrations
 
   get '/about', to: 'static_pages#about', as: 'about'
