@@ -1,111 +1,159 @@
-= form_for @open_practice do |f|
+= bootstrap_form_for @open_practice do |f|
   - if @open_practice.errors.any?
     #error_explanation
-      h2 = "#{pluralize(@open_practice.errors.count, "error")} prohibited this open_practice from being saved:"
+      h2 = "#{pluralize(@open_practice.errors.count, "error")} prohibited this practice from being saved:"
       ul
         - @open_practice.errors.full_messages.each do |message|
           li = message
 
-  .field
-    = f.label :league_name
-    = f.text_field :league_name
-  .field
-    = f.label :league_website
-    = f.text_field :league_website
-  .field
-    = f.label :city
-    = f.text_field :city
-  .field
-    = f.label :state
-    = f.text_field :state
-  .field
-    = f.label :postal_code
-    = f.text_field :postal_code
-  .field
-    = f.label :country
-    = f.text_field :country
-  .field
-    = f.label :venue
-    = f.text_field :venue
-  .field
-    = f.label :cost
-    = f.text_field :cost
-  .field
-    = f.label :monday
-    = f.check_box :monday
-  .field
-    = f.label :monday_start
-    = f.time_select :monday_start
-  .field
-    = f.label :monday_end
-    = f.time_select :monday_end
-  .field
-    = f.label :tuesday
-    = f.check_box :tuesday
-  .field
-    = f.label :tuesday_start
-    = f.time_select :tuesday_start
-  .field
-    = f.label :tuesday_end
-    = f.time_select :tuesday_end
-  .field
-    = f.label :wednesday
-    = f.check_box :wednesday
-  .field
-    = f.label :wednesday_start
-    = f.time_select :wednesday_start
-  .field
-    = f.label :wednesday_end
-    = f.time_select :wednesday_end
-  .field
-    = f.label :thursday
-    = f.check_box :thursday
-  .field
-    = f.label :thursday_start
-    = f.time_select :thursday_start
-  .field
-    = f.label :thursday_end
-    = f.time_select :thursday_end
-  .field
-    = f.label :friday
-    = f.check_box :friday
-  .field
-    = f.label :friday_start
-    = f.time_select :friday_start
-  .field
-    = f.label :friday_end
-    = f.time_select :friday_end
-  .field
-    = f.label :saturday
-    = f.check_box :saturday
-  .field
-    = f.label :saturday_start
-    = f.time_select :saturday_start
-  .field
-    = f.label :saturday_end
-    = f.time_select :saturday_end
-  .field
-    = f.label :sunday
-    = f.check_box :sunday
-  .field
-    = f.label :sunday_start
-    = f.time_select :sunday_start
-  .field
-    = f.label :sunday_end
-    = f.time_select :sunday_end
-  .field
-    = f.label :venue
-    = f.text_field :venue
-  .field
-    = f.label :practice_contact
-    = f.text_field :practice_contact
-  .field
-    = f.label :submission_contact
-    = f.text_field :submission_contact
-  .field
-    = f.label :approved
-    = f.check_box :approved
-  .field
-    = f.label :deleted
-    = f.check_box :deleted
-  .actions = f.submit
+  .row
+    .col-md-6
+      = f.email_field :submission_contact, label: "Your Email Address", hide_label: true, placeholder: "Your Email Address", help: "We promise only to use this to contact you regarding this submission.", icon: "asterisk"
+  .row
+    .col-md-6
+      = f.text_field :league_name, label: "League Name", hide_label: true, placeholder: "League Name", icon: "asterisk"
+  .row
+    .col-md-6
+      = f.text_field :league_website, hide_label: true, placeholder: "League Website Address"
+  .row
+    .col-md-6
+      = f.email_field :practice_contact, label: "Practice Contact Email", hide_label: true, placeholder: "Practice Contact Email"
+  .row
+    .col-md-6
+      = f.text_field :venue, hide_label: true, placeholder: "Venue Name and/or Street Address"
+  .row
+    .col-md-3
+      = f.text_field :city, hide_label: true, placeholder: "City", icon: "asterisk"
+  .row
+    .col-md-3
+      = f.text_field :state, hide_label: true, placeholder: "State/Province"
+  .row
+    .col-md-2
+      = f.text_field :postal_code, hide_label: true, placeholder: "Postal Code"
+  .row
+    .col-md-2
+      .form-group
+        = f.label :country, "Country", { class: 'control-label' }
+        span.glyphicon.glyphicon-asterisk
+        = f.country_select :country, { priority_countries: ["AU", "AR", "BS", "BE", "BR", "CA", "CL", "CO", "DK", "FI", "FR", "DE", "GR", "IE", "IT", "JP", "MX", "NL", "NZ", "NO", "PT", "PR", "ZA", "ES", "SE", "CH", "GB", "UM", "US", "VG", "VI"] }, class: 'form-control'
+  .row
+    .col-md-2
+      = f.text_field :cost, hide_label: true, placeholder: "Cost"
+  .row
+    .col-md-2
+      = f.check_box :monday, label: "Monday"
+    .col-md-3
+      .form-group
+        .input-group.date#monday_start_group
+          span.input-group-addon
+            span.glyphicon.glyphicon-time
+          input.form-control#monday_start disabled="true" type="text" data-date-format="h:mm A" name="open_practice[monday_start]" placeholder="Start Time" value="#{@open_practice.try(:monday_start).present? ? @open_practice.monday_start.strftime("%l:%M %p") : ""}"
+    .col-md-3
+      .form-group
+        .input-group.date#monday_end_group
+          span.input-group-addon
+            span.glyphicon.glyphicon-time
+          input.form-control#monday_end disabled="true" type="text" data-date-format="h:mm A" name="open_practice[monday_end]" placeholder="End Time" value="#{@open_practice.try(:monday_end).present? ? @open_practice.monday_end.strftime("%l:%M %p") : ""}"
+  .row
+    .col-md-2
+      = f.check_box :tuesday, label: "Tuesday"
+    .col-md-3
+      .form-group
+        .input-group.date#tuesday_start_group
+          span.input-group-addon
+            span.glyphicon.glyphicon-time
+          input.form-control#tuesday_start disabled="true" type="text" data-date-format="h:mm A" name="open_practice[tuesday_start]" placeholder="Start Time" value="#{@open_practice.try(:tuesday_start).present? ? @open_practice.monday_start.strftime("%l:%M %p") : ""}"
+    .col-md-3
+      .form-group
+        .input-group.date#tuesday_end_group
+          span.input-group-addon
+            span.glyphicon.glyphicon-time
+          input.form-control#tuesday_end disabled="true" type="text" data-date-format="h:mm A" name="open_practice[tuesday_end]" placeholder="End Time" value="#{@open_practice.try(:tuesday_end).present? ? @open_practice.monday_end.strftime("%l:%M %p") : ""}"
+  .row
+    .col-md-2
+      = f.check_box :wednesday, label: "Wednesday"
+    .col-md-3
+      .form-group
+        .input-group.date#wednesday_start_group
+          span.input-group-addon
+            span.glyphicon.glyphicon-time
+          input.form-control#wednesday_start disabled="true" type="text" data-date-format="h:mm A" name="open_practice[wednesday_start]" placeholder="Start Time" value="#{@open_practice.try(:wednesday_start).present? ? @open_practice.wednesday_start.strftime("%l:%M %p") : ""}"
+    .col-md-3
+      .form-group
+        .input-group.date#wednesday_end_group
+          span.input-group-addon
+            span.glyphicon.glyphicon-time
+          input.form-control#wednesday_end disabled="true" type="text" data-date-format="h:mm A" name="open_practice[wednesday_end]" placeholder="End Time" value="#{@open_practice.try(:wednesday_end).present? ? @open_practice.wednesday_end.strftime("%l:%M %p") : ""}"
+  .row
+    .col-md-2
+      = f.check_box :thursday, label: "Thursday"
+    .col-md-3
+      .form-group
+        .input-group.date#thursday_start_group
+          span.input-group-addon
+            span.glyphicon.glyphicon-time
+          input.form-control#thursday_start disabled="true" type="text" data-date-format="h:mm A" name="open_practice[thursday_start]" placeholder="Start Time" value="#{@open_practice.try(:thursday_start).present? ? @open_practice.thursday_start.strftime("%l:%M %p") : ""}"
+    .col-md-3
+      .form-group
+        .input-group.date#thursday_end_group
+          span.input-group-addon
+            span.glyphicon.glyphicon-time
+          input.form-control#thursday_end disabled="true" type="text" data-date-format="h:mm A" name="open_practice[thursday_end]" placeholder="End Time" value="#{@open_practice.try(:thursday_end).present? ? @open_practice.thursday_end.strftime("%l:%M %p") : ""}"
+  .row
+    .col-md-2
+      = f.check_box :friday, label: "Friday"
+    .col-md-3
+      .form-group
+        .input-group.date#friday_start_group
+          span.input-group-addon
+            span.glyphicon.glyphicon-time
+          input.form-control#friday_start disabled="true" type="text" data-date-format="h:mm A" name="open_practice[friday_start]" placeholder="Start Time" value="#{@open_practice.try(:friday_start).present? ? @open_practice.friday_start.strftime("%l:%M %p") : ""}"
+    .col-md-3
+      .form-group
+        .input-group.date#friday_end_group
+          span.input-group-addon
+            span.glyphicon.glyphicon-time
+          input.form-control#friday_end disabled="true" type="text" data-date-format="h:mm A" name="open_practice[friday_end]" placeholder="End Time" value="#{@open_practice.try(:friday_end).present? ? @open_practice.friday_end.strftime("%l:%M %p") : ""}"
+  .row
+    .col-md-2
+      = f.check_box :saturday, label: "Saturday"
+    .col-md-3
+      .form-group
+        .input-group.date#saturday_start_group
+          span.input-group-addon
+            span.glyphicon.glyphicon-time
+          input.form-control#saturday_start disabled="true" type="text" data-date-format="h:mm A" name="open_practice[saturday_start]" placeholder="Start Time" value="#{@open_practice.try(:saturday_start).present? ? @open_practice.saturday_start.strftime("%l:%M %p") : ""}"
+    .col-md-3
+      .form-group
+        .input-group.date#saturday_end_group
+          span.input-group-addon
+            span.glyphicon.glyphicon-time
+          input.form-control#saturday_end disabled="true" type="text" data-date-format="h:mm A" name="open_practice[saturday_end]" placeholder="End Time" value="#{@open_practice.try(:saturday_end).present? ? @open_practice.saturday_end.strftime("%l:%M %p") : ""}"
+  .row
+    .col-md-2
+      = f.check_box :sunday, label: "Sunday"
+    .col-md-3
+      .form-group
+        .input-group.date#sunday_start_group
+          span.input-group-addon
+            span.glyphicon.glyphicon-time
+          input.form-control#sunday_start disabled="true" type="text" data-date-format="h:mm A" name="open_practice[sunday_start]" placeholder="Start Time" value="#{@open_practice.try(:sunday_start).present? ? @open_practice.sunday_start.strftime("%l:%M %p") : ""}"
+    .col-md-3
+      .form-group
+        .input-group.date#sunday_end_group
+          span.input-group-addon
+            span.glyphicon.glyphicon-time
+          input.form-control#sunday_end disabled="true" type="text" data-date-format="h:mm A" name="open_practice[sunday_end]" placeholder="End Time" value="#{@open_practice.try(:sunday_end).present? ? @open_practice.sunday_end.strftime("%l:%M %p") : ""}"
+  - if admin_signed_in?
+    .row
+      .col-md-12
+        = f.check_box :approved, label: "Approved?", help: "Approved events will appear for all users on the main site."
+  .row
+    br
+  .row
+    .col-md-1
+      a.btn.btn-default role="button" href="#{root_path}" Cancel
+    .col-md-1
+      .actions = f.submit "Submit"
+  .row
+    br
