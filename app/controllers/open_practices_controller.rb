@@ -4,12 +4,23 @@ class OpenPracticesController < ApplicationController
   # GET /open_practices
   # GET /open_practices.json
   def index
-    @open_practices = OpenPractice.all
+    if admin_signed_in?
+      @open_practices = OpenPractice.all
+    else
+      @open_practices = OpenPractice.where(approved: true, deleted: false)
+    end
   end
 
   # GET /open_practices/1
   # GET /open_practices/1.json
   def show
+    if !admin_signed_in? && (@open_practice.deleted || !@open_practice.approved)
+      redirect_to root_path
+      return
+    end
+    respond_to do |format|
+      format.html { render layout: false }
+    end
   end
 
   # GET /open_practices/new
@@ -19,6 +30,7 @@ class OpenPracticesController < ApplicationController
 
   # GET /open_practices/1/edit
   def edit
+    redirect_to root_path unless admin_signed_in?
   end
 
   # POST /open_practices
@@ -40,6 +52,7 @@ class OpenPracticesController < ApplicationController
   # PATCH/PUT /open_practices/1
   # PATCH/PUT /open_practices/1.json
   def update
+    redirect_to root_path unless admin_signed_in?
     respond_to do |format|
       if @open_practice.update(open_practice_params)
         format.html { redirect_to @open_practice, notice: 'Open practice was successfully updated.' }
@@ -54,6 +67,7 @@ class OpenPracticesController < ApplicationController
   # DELETE /open_practices/1
   # DELETE /open_practices/1.json
   def destroy
+    redirect_to root_path unless admin_signed_in?
     @open_practice.destroy
     respond_to do |format|
       format.html { redirect_to open_practices_url, notice: 'Open practice was successfully destroyed.' }

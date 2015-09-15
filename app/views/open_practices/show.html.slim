@@ -1,108 +1,84 @@
-p#notice = notice
+.modal-header
+  button.close type="button" data-dismiss="modal" aria-label="Close"
+    span aria-hidden="true" &times;
+  h3.modal-title
+    - if !@open_practice.league_website.empty?
+      a href=@open_practice.league_website =@open_practice.league_name
+    - else
+      =@open_practice.league_name
+.modal-body
+  .container-fluid
+    .row
+      .col-md-3
+        strong When
+      .col-md-9
+        =@open_practice.display_datetime
+    .row
+      br
+    .row
+      .col-md-3
+        strong Where
+      .col-md-9
+        == @open_practice.location_html
+    .row
+      br
+    .row
+      .col-md-3
+        strong Rulesets
+      .col-md-9
+        = @open_practice.rulesets.empty? ? 'none specified' : @open_practice.rulesets
+    .row
+      .col-md-3
+        strong Genders
+      .col-md-9
+        = @open_practice.genders.empty? ? 'none specified' : @open_practice.genders
+    .row
+      br
+    .row
+      .col-md-3
+        strong Cost
+      .col-md-9
+        = @open_practice.cost.empty? ? 'not specified' : @open_practice.cost
+    .row
+      br
+    .row
+      .col-md-3
+        strong Preregistration?
+      .col-md-9
+        = @open_practice.preregistration ? 'Yes' : 'No'
+    .row
+      .col-md-3
+        strong Spectators?
+      .col-md-9
+        = @open_practice.preregistration ? 'Yes' : 'No'
+    .row
+      br
+    .row
+      .col-md-3
+        strong Contact
+      .col-md-9
+        - if @open_practice.event_contact.empty?
+          |not specified
+        - else
+          a href="mailto:#{@open_practice.event_contact}"
+            = @open_practice.event_contact
+    .row
+      br
+    .row
+      .col-md-12
+        - if !@open_practice.general_info.empty?
+          span
+            strong Other Information
+          .panel.panel-default
+            .panel-body
+              = auto_link @open_practice.general_info.gsub(/\r?\n/, '<br>')
+.modal-footer
+  .row
+    .col-md-2.text-left
+      a href="https://www.facebook.com/sharer/sharer.php?u=#{root_url}?shared_event=#{@open_practice.id}"
+        = image_tag "fbshare.png"
+    .col-md-10.text-right
+      |Shareable link: 
+      a href="#{root_url}?shared_event=#{@open_practice.id}"
+        = "#{root_url}?shared_event=#{@open_practice.id}"
 
-p
-  strong League name:
-  = @open_practice.league_name
-p
-  strong League website:
-  = @open_practice.league_website
-p
-  strong City:
-  = @open_practice.city
-p
-  strong State:
-  = @open_practice.state
-p
-  strong Postal code:
-  = @open_practice.postal_code
-p
-  strong Country:
-  = @open_practice.country
-p
-  strong Venue:
-  = @open_practice.venue
-p
-  strong Cost:
-  = @open_practice.cost
-p
-  strong Monday:
-  = @open_practice.monday
-p
-  strong Monday start:
-  = @open_practice.monday_start
-p
-  strong Monday end:
-  = @open_practice.monday_end
-p
-  strong Tuesday:
-  = @open_practice.tuesday
-p
-  strong Tuesday start:
-  = @open_practice.tuesday_start
-p
-  strong Tuesday end:
-  = @open_practice.tuesday_end
-p
-  strong Wednesday:
-  = @open_practice.wednesday
-p
-  strong Wednesday start:
-  = @open_practice.wednesday_start
-p
-  strong Wednesday end:
-  = @open_practice.wednesday_end
-p
-  strong Thursday:
-  = @open_practice.thursday
-p
-  strong Thursday start:
-  = @open_practice.thursday_start
-p
-  strong Thursday end:
-  = @open_practice.thursday_end
-p
-  strong Friday:
-  = @open_practice.friday
-p
-  strong Friday start:
-  = @open_practice.friday_start
-p
-  strong Friday end:
-  = @open_practice.friday_end
-p
-  strong Saturday:
-  = @open_practice.saturday
-p
-  strong Saturday start:
-  = @open_practice.saturday_start
-p
-  strong Saturday end:
-  = @open_practice.saturday_end
-p
-  strong Sunday:
-  = @open_practice.sunday
-p
-  strong Sunday start:
-  = @open_practice.sunday_start
-p
-  strong Sunday end:
-  = @open_practice.sunday_end
-p
-  strong Venue:
-  = @open_practice.venue
-p
-  strong Practice contact:
-  = @open_practice.practice_contact
-p
-  strong Submission contact:
-  = @open_practice.submission_contact
-p
-  strong Approved:
-  = @open_practice.approved
-p
-  strong Deleted:
-  = @open_practice.deleted
-
-= link_to 'Edit', edit_open_practice_path(@open_practice)
-'|
-= link_to 'Back', open_practices_path
