@@ -2,11 +2,21 @@ class DerbyEvent < ActiveRecord::Base
   DATE_FORMAT = '%m/%d/%Y'
   TIME_FORMAT = '%l:%M %P'
 
+  RULESETS = %i(mrda wftda jrda made usars rdcl)
+  GENDERS = %w(Male Female Co-Ed)
+
+  scope :viewable, -> { where(approved: true, deleted: false) }
+
+  def viewable?
+    approved && !deleted
+  end
+
   def country_name
     cname = ISO3166::Country[country]
     cname.translations[I18n.locale.to_s] || cname.name
   end
 
+  # draper here also
   def display_date
     if start_date == end_date || end_date.nil?
       start_date.strftime(DATE_FORMAT)
@@ -15,6 +25,7 @@ class DerbyEvent < ActiveRecord::Base
     end
   end
 
+  # use https://github.com/drapergem/draper or something instead of putting this in the model
   def display_datetime
     display_str = start_date.strftime(DATE_FORMAT)
     if start_time
@@ -33,6 +44,7 @@ class DerbyEvent < ActiveRecord::Base
     display_str
   end
 
+  # this belongs in a partial or maybe draper-ize also NO HTML IN THE MODEL
   def location_html
     lhtml = ''
     lhtml << "#{venue}<br>" unless venue.empty?
@@ -43,15 +55,13 @@ class DerbyEvent < ActiveRecord::Base
   end
 
   def rulesets
-    ['mrda', 'wftda', 'jrda', 'made', 'usars', 'rdcl'].map do |ruleset|
-      send(ruleset) ? ruleset.upcase : nil
-    end.compact.join(', ')
+    RULESETS.select{|ruleset| send(ruleset) }
   end
 
   def genders
-    ['Male', 'Female', 'Co-Ed'].map do |gender|
-      send(gender.downcase.gsub(/[^a-z]/, '')) ? gender : nil
-    end.compact.join(', ')
+    GENDERS.select do |gender|
+      send(gender.downcase.gsub(/[^a-z]/, ''))
+    end
   end
 
   def html_info
