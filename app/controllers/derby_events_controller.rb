@@ -7,7 +7,7 @@ class DerbyEventsController < ApplicationController
     if admin_signed_in?
       @derby_events = DerbyEvent.all
     else
-      @derby_events = DerbyEvent.where(approved: true, deleted: false).where("start_date >= ? OR end_date >= ?", Date.today, Date.today)
+      @derby_events = DerbyEvent.upcoming
     end
     @derby_events = @derby_events.map {|derby_event| DerbyEventPresenter.new(derby_event)}
   end
@@ -15,7 +15,7 @@ class DerbyEventsController < ApplicationController
   # GET /derby_events/1
   # GET /derby_events/1.json
   def show
-    if !admin_signed_in? && (@derby_event.deleted || !@derby_event.approved)
+    unless @derby_event.viewable? || admin_signed_in?
       redirect_to root_path
       return
     end

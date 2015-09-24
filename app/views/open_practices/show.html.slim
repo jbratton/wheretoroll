@@ -3,7 +3,7 @@
     span aria-hidden="true" &times;
   h3.modal-title
     - if !@open_practice.league_website.empty?
-      a href=@open_practice.league_website =@open_practice.league_name
+      a href=@open_practice.league_website target="_blank" =@open_practice.league_name
     - else
       =@open_practice.league_name
 .modal-body
