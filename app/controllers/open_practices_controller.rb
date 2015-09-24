@@ -9,6 +9,7 @@ class OpenPracticesController < ApplicationController
     else
       @open_practices = OpenPractice.where(approved: true, deleted: false)
     end
+    @open_practices = @open_practices.map {|open_practice| OpenPracticePresenter.new(open_practice)}
   end
 
   # GET /open_practices/1
@@ -43,7 +44,7 @@ class OpenPracticesController < ApplicationController
 
     respond_to do |format|
       if @open_practice.save
-        format.html { redirect_to @open_practice, notice: 'Open practice was successfully created.' }
+        format.html { redirect_to practice_thanks_path }
         format.json { render :show, status: :created, location: @open_practice }
       else
         format.html { render :new }
@@ -81,7 +82,7 @@ class OpenPracticesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_open_practice
-      @open_practice = OpenPractice.find(params[:id])
+      @open_practice = OpenPracticePresenter.new(OpenPractice.find(params[:id]))
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
