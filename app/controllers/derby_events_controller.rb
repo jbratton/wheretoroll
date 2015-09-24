@@ -9,6 +9,7 @@ class DerbyEventsController < ApplicationController
     else
       @derby_events = DerbyEvent.where(approved: true, deleted: false).where("start_date >= ? OR end_date >= ?", Date.today, Date.today)
     end
+    @derby_events = @derby_events.map {|derby_event| DerbyEventPresenter.new(derby_event)}
   end
 
   # GET /derby_events/1
@@ -42,7 +43,7 @@ class DerbyEventsController < ApplicationController
 
     respond_to do |format|
       if @derby_event.save
-        format.html { redirect_to thanks_path }
+        format.html { redirect_to event_thanks_path }
         format.json { render :show, status: :created, location: @derby_event }
       else
         format.html { render :new }
@@ -83,7 +84,7 @@ class DerbyEventsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_derby_event
-      @derby_event = DerbyEvent.find(params[:id])
+      @derby_event = DerbyEventPresenter.new(DerbyEvent.find(params[:id]))
     end
 
     def format_date_for_db(form_date)
