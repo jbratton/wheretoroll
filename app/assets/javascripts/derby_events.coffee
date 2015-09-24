@@ -33,4 +33,51 @@ $(document).ready( ->
   if match_array
     document.load_event_modal(match_array[1])
     $("#event-modal").modal('show')
+
+  # set up derby event form validation
+  $('#new_derby_event').bootstrapValidator({
+    feedbackIcons: false,
+    submitButtons: "[name='commit']",
+    fields: {
+      "derby_event[submission_contact]": {
+        validators: {
+          notEmpty: {
+            message: "Your email address is required."
+          },
+          emailAddress: {
+            message: "Please enter a valid email address."
+          }
+        }
+      },
+      "derby_event[name]": {
+        validators: {
+          notEmpty: {
+            message: "We need to know the name of the event!"
+          }
+        }
+      },
+      "derby_event[start_date]": {
+        validators: {
+          notEmpty: {
+            message: "The date of the event is required."
+          }
+        }
+      },
+      "derby_event[city]": {
+        validators: {
+          notEmpty: {
+            message: "Please tell us the city the event will be in."
+          }
+        }
+      },
+      "derby_event[country]": {
+        validators: {
+          notEmpty: {
+            message: "The country is required."
+          }
+        }
+      }
+    }
+  })
 )
+
