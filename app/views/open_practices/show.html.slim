@@ -12,7 +12,7 @@
       .col-md-3
         strong When
       .col-md-9
-        =@open_practice.display_datetime
+        == @open_practice.display_days
     .row
       br
     .row
@@ -24,18 +24,6 @@
       br
     .row
       .col-md-3
-        strong Rulesets
-      .col-md-9
-        = @open_practice.rulesets.empty? ? 'none specified' : @open_practice.rulesets
-    .row
-      .col-md-3
-        strong Genders
-      .col-md-9
-        = @open_practice.genders.empty? ? 'none specified' : @open_practice.genders
-    .row
-      br
-    .row
-      .col-md-3
         strong Cost
       .col-md-9
         = @open_practice.cost.empty? ? 'not specified' : @open_practice.cost
@@ -43,42 +31,15 @@
       br
     .row
       .col-md-3
-        strong Preregistration?
-      .col-md-9
-        = @open_practice.preregistration ? 'Yes' : 'No'
-    .row
-      .col-md-3
-        strong Spectators?
-      .col-md-9
-        = @open_practice.preregistration ? 'Yes' : 'No'
-    .row
-      br
-    .row
-      .col-md-3
         strong Contact
       .col-md-9
-        - if @open_practice.event_contact.empty?
+        - if @open_practice.practice_contact.empty?
           |not specified
         - else
-          a href="mailto:#{@open_practice.event_contact}"
-            = @open_practice.event_contact
+          a href="mailto:#{@open_practice.practice_contact}"
+            = @open_practice.practice_contact
     .row
       br
-    .row
-      .col-md-12
-        - if !@open_practice.general_info.empty?
-          span
-            strong Other Information
-          .panel.panel-default
-            .panel-body
-              = auto_link @open_practice.general_info.gsub(/\r?\n/, '<br>')
 .modal-footer
   .row
-    .col-md-2.text-left
-      a href="https://www.facebook.com/sharer/sharer.php?u=#{root_url}?shared_event=#{@open_practice.id}"
-        = image_tag "fbshare.png"
-    .col-md-10.text-right
-      |Shareable link: 
-      a href="#{root_url}?shared_event=#{@open_practice.id}"
-        = "#{root_url}?shared_event=#{@open_practice.id}"
 

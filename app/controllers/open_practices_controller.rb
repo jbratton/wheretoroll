@@ -33,6 +33,9 @@ class OpenPracticesController < ApplicationController
     redirect_to root_path unless admin_signed_in?
   end
 
+  def thanks
+  end
+
   # POST /open_practices
   # POST /open_practices.json
   def create

@@ -4,17 +4,26 @@ Rails.application.routes.draw do
 
   get '/about', to: 'static_pages#about', as: 'about'
 
-  get '/submit', to: 'derby_events#new', as: 'submit'
-  post '/submit', to: 'derby_events#create'
-  patch '/submit', to: 'derby_events#update'
+  get '/events', to: 'derby_events#index', as: 'event_index'
+  get '/events/submit', to: 'derby_events#new', as: 'event_submit'
+  post '/events/submit', to: 'derby_events#create'
+  patch '/events/submit', to: 'derby_events#update'
 
-  get '/thanks', to: 'derby_events#thanks', as: 'thanks'
+  get '/events/thanks', to: 'derby_events#thanks', as: 'event_thanks'
+
+  get '/practices', to: 'open_practices#index', as: 'practice_index'
+  get '/practices/submit', to: 'open_practices#new', as: 'practice_submit'
+  post '/practices/submit', to: 'open_practices#create'
+  patch '/practices/submit', to: 'open_practices#update'
+
+  get '/practices/thanks', to: 'open_practices#thanks', as: 'practice_thanks'
 
   devise_scope :admin do
     get '/sign_in', to: 'devise/sessions#new', as: 'sign_in'
   end
 
   resources :derby_events
+  resources :open_practices
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

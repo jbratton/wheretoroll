@@ -23,6 +23,7 @@ $(document).ready( ->
               <a href="https://www.facebook.com/wheretoroll">Facebook</a>.
             </p>
           </div>
+          <div class="modal-footer></div>
         ')
       )
 

@@ -3,6 +3,33 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).ready( ->
 
+  load_practice_modal = (practice_id) ->
+    $.ajax("open_practices/" + practice_id)
+      .done( (data, status, jqXHR) ->
+        $("#event-modal-content").html(data)
+      )
+      .fail( (data, status, jqXHR) ->
+        $("#event-modal-content").html('
+          <div class="modal-header">
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h3 class="modal-title">Oops!</h3>
+          </div>
+          <div class="modal-body">
+            <p>There was an error loading the practice information.
+              Please give it another try and if there are still problems, let us know at
+              <a href="mailto:info@wheretoroll.com">info@wheretoroll.com</a> or on
+              <a href="https://www.facebook.com/wheretoroll">Facebook</a>.
+            </p>
+          </div>
+        ')
+      )
+
+  $("tr[data-practice-id]").on("click", ->
+    load_practice_modal($(this).data("practice-id"))
+  )
+
   # set up day checkboxes to enable corresponding time fields when checked
   days = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
   set_change = (day) ->

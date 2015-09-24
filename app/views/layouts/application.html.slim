@@ -43,25 +43,25 @@ html
           a.navbar-brand href="#{root_path}" =image_tag('w2r-round-150x150.png', size: '100x100', alt: 'Where to Roll', class: 'brand-icon')
 
         #home-navbar.collapse.navbar-collapse
-          /- if current_page? root_path
-            form.navbar-form.navbar-right role="search"
-              .form-group
-                input.form-control type="text" placeholder="Search"
-              button.btn.btn-default type="submit"
-                span.glyphicon.glyphicon-search aria-hidden="true" aria-label="Submit"
           ul.nav.navbar-nav
-            /li class=('active' if current_page? root_path)
-              a href=root_path
-                | Events
-                - if current_page? root_path
-                  span.sr-only
-                    | (current)
-            li class=('active' if current_page? submit_path)
-              a href=submit_path
-                | Submit
-                - if current_page? submit_path
-                  span.sr-only
-                    | (current)
+            li.dropdown class=('active' if current_page?(event_index_path) || current_page?(event_submit_path))
+              a.dropdown-toggle href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
+                | Events 
+                span.caret
+              ul.dropdown-menu
+                li
+                  a href=event_index_path View
+                li
+                  a href=event_submit_path Submit
+            li.dropdown class=('active' if current_page?(practice_index_path) || current_page?(practice_submit_path))
+              a.dropdown-toggle href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
+                | Practices 
+                span.caret
+              ul.dropdown-menu
+                li
+                  a href=practice_index_path View
+                li
+                  a href=practice_submit_path Submit
             li class=('active' if current_page? about_path)
               a href=about_path
                 | About

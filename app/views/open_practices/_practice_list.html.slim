@@ -1,13 +1,13 @@
-.modal.fade#practice-modal tabindex="-1" role="dialog"
+.modal.fade#event-modal tabindex="-1" role="dialog"
   .modal-dialog role="document"
-    .model-content#practice-modal-content
+    .modal-content#event-modal-content
       .modal-body
         .h3 Loading...
 
 .panel.panel-default.col-md-10.col-md-offset-1.event-list
   - if @open_practices.empty?
     p.text-center
-    |No open practices found. Have one to share?
+    |No open practices found. Have one to share? 
     a href=practice_submit_path Submit it!
   - else
     .table-responsive
@@ -20,7 +20,7 @@
             th Country
         tbody
           - @open_practices.each do |practice|
-            tr data-toggle="modal" data-target="#practice-modal" data-event-id=practice.id class=(admin_signed_in? && practice.approved ? 'success' : '')
+            tr data-toggle="modal" data-target="#event-modal" data-practice-id=practice.id class=(admin_signed_in? && practice.approved ? 'success' : '')
               td = practice.league_name.html_safe
               td = practice.city.html_safe
               td = practice.state.html_safe
