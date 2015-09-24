@@ -6,11 +6,23 @@
 }
 
 .headerSortDown:after {
-  content: "⬇︎";
+  content: ' ';
+  height: 0;
+  width: 0;
+  position: relative;
+  top: -12px;
+  border: 5px solid transparent;
+  border-bottom-color: #000;
 }
 
 .headerSortUp:after {
-  content: "⬆︎";
+  content: ' ';
+  height: 0;
+  width: 0;
+  position: relative;
+  top: 15px;
+  border: 5px solid transparent;
+  border-top-color: #000;
 }
 
 .glyphicon-asterisk {
