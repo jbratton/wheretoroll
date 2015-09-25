@@ -2,7 +2,6 @@ class OpenPracticesController < ApplicationController
   before_action :set_open_practice, only: [:show, :edit, :update, :destroy]
 
   # GET /open_practices
-  # GET /open_practices.json
   def index
     if admin_signed_in?
       @open_practices = OpenPractice.all
@@ -13,7 +12,6 @@ class OpenPracticesController < ApplicationController
   end
 
   # GET /open_practices/1
-  # GET /open_practices/1.json
   def show
     if !admin_signed_in? && (@open_practice.deleted || !@open_practice.approved)
       redirect_to root_path
@@ -38,44 +36,36 @@ class OpenPracticesController < ApplicationController
   end
 
   # POST /open_practices
-  # POST /open_practices.json
   def create
     @open_practice = OpenPractice.new(open_practice_params)
 
     respond_to do |format|
       if @open_practice.save
         format.html { redirect_to practice_thanks_path }
-        format.json { render :show, status: :created, location: @open_practice }
       else
         format.html { render :new }
-        format.json { render json: @open_practice.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # PATCH/PUT /open_practices/1
-  # PATCH/PUT /open_practices/1.json
   def update
     redirect_to root_path unless admin_signed_in?
     respond_to do |format|
       if @open_practice.update(open_practice_params)
         format.html { redirect_to @open_practice, notice: 'Open practice was successfully updated.' }
-        format.json { render :show, status: :ok, location: @open_practice }
       else
         format.html { render :edit }
-        format.json { render json: @open_practice.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # DELETE /open_practices/1
-  # DELETE /open_practices/1.json
   def destroy
     redirect_to root_path unless admin_signed_in?
     @open_practice.destroy
     respond_to do |format|
       format.html { redirect_to open_practices_url, notice: 'Open practice was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
