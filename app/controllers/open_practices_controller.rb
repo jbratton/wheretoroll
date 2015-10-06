@@ -3,6 +3,7 @@ class OpenPracticesController < ApplicationController
 
   # GET /open_practices
   def index
+    @title = "Open Practice List -"
     if admin_signed_in?
       @open_practices = OpenPractice.all
     else
@@ -24,6 +25,7 @@ class OpenPracticesController < ApplicationController
 
   # GET /open_practices/new
   def new
+    @title = "Submit an Open Practice -"
     @open_practice = OpenPractice.new
   end
 

@@ -3,6 +3,7 @@ class DerbyEventsController < ApplicationController
 
   # GET /derby_events
   def index
+    @title = "Derby Event List -"
     if admin_signed_in?
       @derby_events = DerbyEvent.all
     else
@@ -24,6 +25,7 @@ class DerbyEventsController < ApplicationController
 
   # GET /derby_events/new
   def new
+    @title = "Submit an Event -"
     @derby_event = DerbyEvent.new
   end
 
