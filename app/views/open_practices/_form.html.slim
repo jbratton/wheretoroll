@@ -7,6 +7,18 @@
           li = message
 
   .row
+    .col-md-8
+      p
+      | Here should be words about submitting a league's practice schedule. We understand practice times and venues
+      | can change on short notice so we'll ask visiting skaters to get in touch with the listed contact for exact 
+      | details before showing up. Please let us know by 
+      a href="mailto:info@wheretoroll.com" email
+      |  or 
+      a href="https://www.facebook.com/wheretoroll" Facebook
+      |  if your league is already listed, but has made permanent changes to their practice schedule.
+  .row
+    br
+  .row
     .col-md-6
       = f.email_field :submission_contact, label: "Your Email Address", hide_label: true, placeholder: "Your Email Address", help: "We promise only to use this to contact you regarding this submission.", icon: "asterisk"
   .row
