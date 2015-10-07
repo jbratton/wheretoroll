@@ -61,13 +61,13 @@
         .input-group.date#monday_start_group
           span.input-group-addon
             span.glyphicon.glyphicon-time
-          input.form-control#monday_start disabled="true" type="text" data-date-format="h:mm A" name="open_practice[monday_start]" placeholder="Start Time" value="#{@open_practice.try(:monday_start).present? ? @open_practice.monday_start.strftime("%l:%M %p") : ""}"
+          input.form-control#monday_start disabled=(true unless @open_practice.monday) type="text" data-date-format="h:mm A" name="open_practice[monday_start]" placeholder="Start Time" value="#{@open_practice.monday_start.present? ? @open_practice.monday_start.strftime("%l:%M %p") : ""}"
     .col-md-3
       .form-group
         .input-group.date#monday_end_group
           span.input-group-addon
             span.glyphicon.glyphicon-time
-          input.form-control#monday_end disabled="true" type="text" data-date-format="h:mm A" name="open_practice[monday_end]" placeholder="End Time" value="#{@open_practice.try(:monday_end).present? ? @open_practice.monday_end.strftime("%l:%M %p") : ""}"
+          input.form-control#monday_end disabled=(true unless @open_practice.monday) type="text" data-date-format="h:mm A" name="open_practice[monday_end]" placeholder="End Time" value="#{@open_practice.monday_end.present? ? @open_practice.monday_end.strftime("%l:%M %p") : ""}"
   .row
     .col-md-2
       = f.check_box :tuesday, label: "Tuesday"
@@ -76,13 +76,13 @@
         .input-group.date#tuesday_start_group
           span.input-group-addon
             span.glyphicon.glyphicon-time
-          input.form-control#tuesday_start disabled="true" type="text" data-date-format="h:mm A" name="open_practice[tuesday_start]" placeholder="Start Time" value="#{@open_practice.try(:tuesday_start).present? ? @open_practice.monday_start.strftime("%l:%M %p") : ""}"
+          input.form-control#tuesday_start disabled=(true unless @open_practice.tuesday) type="text" data-date-format="h:mm A" name="open_practice[tuesday_start]" placeholder="Start Time" value="#{@open_practice.tuesday_start.present? ? @open_practice.tuesday_start.strftime("%l:%M %p") : ""}"
     .col-md-3
       .form-group
         .input-group.date#tuesday_end_group
           span.input-group-addon
             span.glyphicon.glyphicon-time
-          input.form-control#tuesday_end disabled="true" type="text" data-date-format="h:mm A" name="open_practice[tuesday_end]" placeholder="End Time" value="#{@open_practice.try(:tuesday_end).present? ? @open_practice.monday_end.strftime("%l:%M %p") : ""}"
+          input.form-control#tuesday_end disabled=(true unless @open_practice.tuesday) type="text" data-date-format="h:mm A" name="open_practice[tuesday_end]" placeholder="End Time" value="#{@open_practice.tuesday_end.present? ? @open_practice.tuesday_end.strftime("%l:%M %p") : ""}"
   .row
     .col-md-2
       = f.check_box :wednesday, label: "Wednesday"
@@ -91,13 +91,13 @@
         .input-group.date#wednesday_start_group
           span.input-group-addon
             span.glyphicon.glyphicon-time
-          input.form-control#wednesday_start disabled="true" type="text" data-date-format="h:mm A" name="open_practice[wednesday_start]" placeholder="Start Time" value="#{@open_practice.try(:wednesday_start).present? ? @open_practice.wednesday_start.strftime("%l:%M %p") : ""}"
+          input.form-control#wednesday_start disabled=(true unless @open_practice.wednesday) type="text" data-date-format="h:mm A" name="open_practice[wednesday_start]" placeholder="Start Time" value="#{@open_practice.wednesday_start.present? ? @open_practice.wednesday_start.strftime("%l:%M %p") : ""}"
     .col-md-3
       .form-group
         .input-group.date#wednesday_end_group
           span.input-group-addon
             span.glyphicon.glyphicon-time
-          input.form-control#wednesday_end disabled="true" type="text" data-date-format="h:mm A" name="open_practice[wednesday_end]" placeholder="End Time" value="#{@open_practice.try(:wednesday_end).present? ? @open_practice.wednesday_end.strftime("%l:%M %p") : ""}"
+          input.form-control#wednesday_end disabled=(true unless @open_practice.wednesday) type="text" data-date-format="h:mm A" name="open_practice[wednesday_end]" placeholder="End Time" value="#{@open_practice.wednesday_end.present? ? @open_practice.wednesday_end.strftime("%l:%M %p") : ""}"
   .row
     .col-md-2
       = f.check_box :thursday, label: "Thursday"
@@ -106,13 +106,13 @@
         .input-group.date#thursday_start_group
           span.input-group-addon
             span.glyphicon.glyphicon-time
-          input.form-control#thursday_start disabled="true" type="text" data-date-format="h:mm A" name="open_practice[thursday_start]" placeholder="Start Time" value="#{@open_practice.try(:thursday_start).present? ? @open_practice.thursday_start.strftime("%l:%M %p") : ""}"
+          input.form-control#thursday_start disabled=(true unless @open_practice.thursday) type="text" data-date-format="h:mm A" name="open_practice[thursday_start]" placeholder="Start Time" value="#{@open_practice.thursday_start.present? ? @open_practice.thursday_start.strftime("%l:%M %p") : ""}"
     .col-md-3
       .form-group
         .input-group.date#thursday_end_group
           span.input-group-addon
             span.glyphicon.glyphicon-time
-          input.form-control#thursday_end disabled="true" type="text" data-date-format="h:mm A" name="open_practice[thursday_end]" placeholder="End Time" value="#{@open_practice.try(:thursday_end).present? ? @open_practice.thursday_end.strftime("%l:%M %p") : ""}"
+          input.form-control#thursday_end disabled=(true unless @open_practice.thursday) type="text" data-date-format="h:mm A" name="open_practice[thursday_end]" placeholder="End Time" value="#{@open_practice.thursday_end.present? ? @open_practice.thursday_end.strftime("%l:%M %p") : ""}"
   .row
     .col-md-2
       = f.check_box :friday, label: "Friday"
@@ -121,13 +121,13 @@
         .input-group.date#friday_start_group
           span.input-group-addon
             span.glyphicon.glyphicon-time
-          input.form-control#friday_start disabled="true" type="text" data-date-format="h:mm A" name="open_practice[friday_start]" placeholder="Start Time" value="#{@open_practice.try(:friday_start).present? ? @open_practice.friday_start.strftime("%l:%M %p") : ""}"
+          input.form-control#friday_start disabled=(true unless @open_practice.friday) type="text" data-date-format="h:mm A" name="open_practice[friday_start]" placeholder="Start Time" value="#{@open_practice.friday_start.present? ? @open_practice.friday_start.strftime("%l:%M %p") : ""}"
     .col-md-3
       .form-group
         .input-group.date#friday_end_group
           span.input-group-addon
             span.glyphicon.glyphicon-time
-          input.form-control#friday_end disabled="true" type="text" data-date-format="h:mm A" name="open_practice[friday_end]" placeholder="End Time" value="#{@open_practice.try(:friday_end).present? ? @open_practice.friday_end.strftime("%l:%M %p") : ""}"
+          input.form-control#friday_end disabled=(true unless @open_practice.friday) type="text" data-date-format="h:mm A" name="open_practice[friday_end]" placeholder="End Time" value="#{@open_practice.friday_end.present? ? @open_practice.friday_end.strftime("%l:%M %p") : ""}"
   .row
     .col-md-2
       = f.check_box :saturday, label: "Saturday"
@@ -136,13 +136,13 @@
         .input-group.date#saturday_start_group
           span.input-group-addon
             span.glyphicon.glyphicon-time
-          input.form-control#saturday_start disabled="true" type="text" data-date-format="h:mm A" name="open_practice[saturday_start]" placeholder="Start Time" value="#{@open_practice.try(:saturday_start).present? ? @open_practice.saturday_start.strftime("%l:%M %p") : ""}"
+          input.form-control#saturday_start disabled=(true unless @open_practice.saturday) type="text" data-date-format="h:mm A" name="open_practice[saturday_start]" placeholder="Start Time" value="#{@open_practice.saturday_start.present? ? @open_practice.saturday_start.strftime("%l:%M %p") : ""}"
     .col-md-3
       .form-group
         .input-group.date#saturday_end_group
           span.input-group-addon
             span.glyphicon.glyphicon-time
-          input.form-control#saturday_end disabled="true" type="text" data-date-format="h:mm A" name="open_practice[saturday_end]" placeholder="End Time" value="#{@open_practice.try(:saturday_end).present? ? @open_practice.saturday_end.strftime("%l:%M %p") : ""}"
+          input.form-control#saturday_end disabled=(true unless @open_practice.saturday) type="text" data-date-format="h:mm A" name="open_practice[saturday_end]" placeholder="End Time" value="#{@open_practice.saturday_end.present? ? @open_practice.saturday_end.strftime("%l:%M %p") : ""}"
   .row
     .col-md-2
       = f.check_box :sunday, label: "Sunday"
@@ -151,13 +151,13 @@
         .input-group.date#sunday_start_group
           span.input-group-addon
             span.glyphicon.glyphicon-time
-          input.form-control#sunday_start disabled="true" type="text" data-date-format="h:mm A" name="open_practice[sunday_start]" placeholder="Start Time" value="#{@open_practice.try(:sunday_start).present? ? @open_practice.sunday_start.strftime("%l:%M %p") : ""}"
+          input.form-control#sunday_start disabled=(true unless @open_practice.sunday) type="text" data-date-format="h:mm A" name="open_practice[sunday_start]" placeholder="Start Time" value="#{@open_practice.sunday_start.present? ? @open_practice.sunday_start.strftime("%l:%M %p") : ""}"
     .col-md-3
       .form-group
         .input-group.date#sunday_end_group
           span.input-group-addon
             span.glyphicon.glyphicon-time
-          input.form-control#sunday_end disabled="true" type="text" data-date-format="h:mm A" name="open_practice[sunday_end]" placeholder="End Time" value="#{@open_practice.try(:sunday_end).present? ? @open_practice.sunday_end.strftime("%l:%M %p") : ""}"
+          input.form-control#sunday_end disabled=(true unless @open_practice.sunday) type="text" data-date-format="h:mm A" name="open_practice[sunday_end]" placeholder="End Time" value="#{@open_practice.sunday_end.present? ? @open_practice.sunday_end.strftime("%l:%M %p") : ""}"
   - if admin_signed_in?
     .row
       .col-md-12

@@ -5,6 +5,14 @@ class DerbyEventPresenter
     @derby_event = derby_event
   end
 
+  def self.method_missing(method_name, *args)
+    if DerbyEvent.respond_to? method_name
+      DerbyEvent.send(method_name, *args)
+    else
+      super
+    end
+  end
+
   def method_missing(method_name, *args)
     if derby_event.respond_to? method_name
       derby_event.send(method_name, *args)

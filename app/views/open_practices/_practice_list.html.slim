@@ -27,5 +27,5 @@
               td.state = practice.state.html_safe
               td.country = practice.country_name.html_safe
               - if admin_signed_in?
-                td = link_to "Edit", edit_open_practice_path(practice)
+                td = link_to "Edit", edit_open_practice_path(practice.id)
 
