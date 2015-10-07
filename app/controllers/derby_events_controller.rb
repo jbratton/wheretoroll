@@ -5,9 +5,9 @@ class DerbyEventsController < ApplicationController
   def index
     @title = "Derby Event List -"
     if admin_signed_in?
-      @derby_events = DerbyEvent.all
-    else
       @derby_events = DerbyEvent.upcoming
+    else
+      @derby_events = DerbyEvent.viewable.upcoming
     end
     @derby_events = @derby_events.map {|derby_event| DerbyEventPresenter.new(derby_event)}
   end

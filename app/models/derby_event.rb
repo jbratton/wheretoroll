@@ -3,7 +3,7 @@ class DerbyEvent < ActiveRecord::Base
   RULESETS = %w(mrda wftda jrda made usars rdcl)
 
   scope :viewable, -> { where(approved: true, deleted: false) }
-  scope :upcoming, -> { viewable.where("start_date >= ? OR end_date >= ?", Date.today, Date.today) }
+  scope :upcoming, -> { where("start_date >= ? OR end_date >= ?", Date.today, Date.today) }
 
   def viewable?
     approved && !deleted

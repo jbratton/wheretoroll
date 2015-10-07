@@ -7,14 +7,14 @@ class OpenPracticesController < ApplicationController
     if admin_signed_in?
       @open_practices = OpenPractice.all
     else
-      @open_practices = OpenPractice.where(approved: true, deleted: false)
+      @open_practices = OpenPractice.viewable
     end
     @open_practices = @open_practices.map {|open_practice| OpenPracticePresenter.new(open_practice)}
   end
 
   # GET /open_practices/1
   def show
-    if !admin_signed_in? && (@open_practice.deleted || !@open_practice.approved)
+    unless admin_signed_in? || @open_practice.viewable?
       redirect_to root_path
       return
     end
