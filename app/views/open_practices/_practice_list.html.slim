@@ -10,7 +10,8 @@
     |No open practices found. Have one to share? 
     a href=practice_submit_path Submit it!
   - else
-    .table-responsive
+    .table-responsive#practice-div
+      input.search placeholder="Search"
       table.table.table-hover.table-condensed#event-table
         thead
           tr
@@ -18,13 +19,13 @@
             th City
             th State/Province
             th Country
-        tbody
+        tbody.list
           - @open_practices.each do |practice|
             tr data-toggle="modal" data-target="#event-modal" data-practice-id=practice.id class=(admin_signed_in? && practice.approved ? 'success' : '')
-              td = practice.league_name.html_safe
-              td = practice.city.html_safe
-              td = practice.state.html_safe
-              td = practice.country_name.html_safe
+              td.league = practice.league_name.html_safe
+              td.city = practice.city.html_safe
+              td.state = practice.state.html_safe
+              td.country = practice.country_name.html_safe
               - if admin_signed_in?
                 td = link_to "Edit", edit_open_practice_path(practice)
 

@@ -19,4 +19,5 @@
 //= require moment
 //= require bootstrap-datetimepicker
 //= require jquery.tablesorter.min
+//= require list.min
 //= require_tree .

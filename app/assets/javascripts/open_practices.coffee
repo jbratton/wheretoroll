@@ -56,6 +56,12 @@ $(document).ready( ->
     }
   })
 
+  # init practice list search
+  options = {
+    valueNames: ['league', 'city', 'state', 'country']
+  }
+  practiceList = new List('practice-div', options)
+
   # init time pickers in open practice form
   $("#monday_start_group").datetimepicker({
     stepping: 15,

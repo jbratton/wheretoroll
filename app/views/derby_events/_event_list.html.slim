@@ -10,7 +10,8 @@
       |No events found. Have one to share? 
       a href=event_submit_path Submit it!
   - else
-    .table-responsive
+    .table-responsive#event-div
+      input.search placeholder="Search"
       table.table.table-hover.table-condensed#event-table
         thead
           tr
@@ -19,14 +20,14 @@
             th City
             th State/Province
             th Country
-        tbody
+        tbody.list
           - @derby_events.each do |event|
             tr data-toggle="modal" data-target="#event-modal" data-event-id=event.id class=(admin_signed_in? && event.approved ? 'success' : '')
-              td = event.start_date.strftime('%m/%d/%Y').html_safe
-              td = event.name.html_safe
-              td = event.city.html_safe
-              td = event.state.html_safe
-              td = event.country_name.html_safe
+              td.date = event.start_date.strftime('%m/%d/%Y').html_safe
+              td.name = event.name.html_safe
+              td.city = event.city.html_safe
+              td.state = event.state.html_safe
+              td.country = event.country_name.html_safe
               - if admin_signed_in?
                 td = link_to "Edit", edit_derby_event_path(event)
 

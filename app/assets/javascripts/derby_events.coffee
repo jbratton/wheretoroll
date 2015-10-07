@@ -34,6 +34,12 @@ $(document).ready( ->
     document.load_event_modal(match_array[1])
     $("#event-modal").modal('show')
 
+  # init event list search
+  options = {
+    valueNames: ['date', 'name', 'city', 'state', 'country']
+  }
+  eventList = new List('event-div', options)
+
   # set up derby event form validation
   $('#new_derby_event').bootstrapValidator({
     feedbackIcons: false,
