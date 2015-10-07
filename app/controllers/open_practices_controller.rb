@@ -1,5 +1,5 @@
 class OpenPracticesController < ApplicationController
-  before_action :set_open_practice, only: [:show, :edit, :update, :destroy]
+  before_action :set_open_practice, only: [:show]
 
   # GET /open_practices
   def index
@@ -32,6 +32,7 @@ class OpenPracticesController < ApplicationController
   # GET /open_practices/1/edit
   def edit
     redirect_to root_path unless admin_signed_in?
+    @open_practice = OpenPractice.find(params[:id])
   end
 
   def thanks
@@ -53,9 +54,10 @@ class OpenPracticesController < ApplicationController
   # PATCH/PUT /open_practices/1
   def update
     redirect_to root_path unless admin_signed_in?
+    @open_practice = OpenPractice.find(params[:id])
     respond_to do |format|
       if @open_practice.update(open_practice_params)
-        format.html { redirect_to @open_practice, notice: 'Open practice was successfully updated.' }
+        format.html { redirect_to root_path, notice: 'Practice was successfully updated.' }
       else
         format.html { render :edit }
       end

@@ -1,5 +1,5 @@
 class DerbyEventsController < ApplicationController
-  before_action :set_derby_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_derby_event, only: [:show]
 
   # GET /derby_events
   def index
@@ -32,6 +32,7 @@ class DerbyEventsController < ApplicationController
   # GET /derby_events/1/edit
   def edit
     redirect_to root_path unless admin_signed_in?
+    @derby_event = DerbyEvent.find(params[:id])
   end
 
   # POST /derby_events
@@ -54,6 +55,7 @@ class DerbyEventsController < ApplicationController
   # PATCH/PUT /derby_events/1
   def update
     redirect_to root_path unless admin_signed_in?
+    @derby_event = DerbyEvent.find(params[:id])
     respond_to do |format|
       if @derby_event.update(derby_event_params)
         format.html { redirect_to root_path, notice: 'Event was successfully updated.' }
