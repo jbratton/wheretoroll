@@ -23,8 +23,8 @@ class OpenPracticePresenter
 
   def display_days
     open_practice.days.map do |day|
-      start_time = open_practice.send("#{day}_start").strftime(TIME_FORMAT)
-      end_time = open_practice.send("#{day}_end").strftime(TIME_FORMAT)
+      start_time = open_practice.send("#{day}_start").try(:strftime, TIME_FORMAT)
+      end_time = open_practice.send("#{day}_end").try(:strftime, TIME_FORMAT)
       "#{day.capitalize} #{start_time} - #{end_time}"
     end.join("<br>")
   end
