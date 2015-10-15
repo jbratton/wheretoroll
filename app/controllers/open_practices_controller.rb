@@ -1,5 +1,5 @@
 class OpenPracticesController < ApplicationController
-  before_action :set_open_practice, only: [:show]
+  before_action :set_open_practice, only: [:show, :edit, :update]
 
   # GET /open_practices
   def index
@@ -14,6 +14,7 @@ class OpenPracticesController < ApplicationController
 
   # GET /open_practices/1
   def show
+    @open_practice = OpenPracticePresenter.new(@open_practice)
     unless admin_signed_in? || @open_practice.viewable?
       redirect_to root_path
       return
@@ -32,7 +33,6 @@ class OpenPracticesController < ApplicationController
   # GET /open_practices/1/edit
   def edit
     redirect_to root_path unless admin_signed_in?
-    @open_practice = OpenPractice.find(params[:id])
   end
 
   def thanks
@@ -54,7 +54,6 @@ class OpenPracticesController < ApplicationController
   # PATCH/PUT /open_practices/1
   def update
     redirect_to root_path unless admin_signed_in?
-    @open_practice = OpenPractice.find(params[:id])
     respond_to do |format|
       if @open_practice.update(open_practice_params)
         format.html { redirect_to root_path, notice: 'Practice was successfully updated.' }
@@ -76,7 +75,7 @@ class OpenPracticesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_open_practice
-      @open_practice = OpenPracticePresenter.new(OpenPractice.find(params[:id]))
+      @open_practice = OpenPractice.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
