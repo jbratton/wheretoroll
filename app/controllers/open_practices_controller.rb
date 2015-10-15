@@ -1,4 +1,6 @@
 class OpenPracticesController < ApplicationController
+  include URLFormatter
+
   before_action :set_open_practice, only: [:show, :edit, :update]
 
   # GET /open_practices
@@ -80,6 +82,12 @@ class OpenPracticesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def open_practice_params
-      params.require(:open_practice).permit(:league_name, :league_website, :city, :state, :postal_code, :country, :venue, :cost, :monday, :monday_start, :monday_end, :tuesday, :tuesday_start, :tuesday_end, :wednesday, :wednesday_start, :wednesday_end, :thursday, :thursday_start, :thursday_end, :friday, :friday_start, :friday_end, :saturday, :saturday_start, :saturday_end, :sunday, :sunday_start, :sunday_end, :venue, :practice_contact, :submission_contact, :approved, :deleted)
+      practice_params = params.require(:open_practice).permit(:league_name, :league_website, :city, :state, :postal_code, :country, :venue, :cost, :monday, :monday_start, :monday_end, :tuesday, :tuesday_start, :tuesday_end, :wednesday, :wednesday_start, :wednesday_end, :thursday, :thursday_start, :thursday_end, :friday, :friday_start, :friday_end, :saturday, :saturday_start, :saturday_end, :sunday, :sunday_start, :sunday_end, :venue, :practice_contact, :submission_contact, :approved, :deleted)
+
+      unless practice_params[:league_website].blank?
+        practice_params[:league_website] = format_url_for_db(practice_params[:league_website])
+      end
+
+      practice_params
     end
 end

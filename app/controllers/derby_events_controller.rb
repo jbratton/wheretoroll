@@ -1,4 +1,6 @@
 class DerbyEventsController < ApplicationController
+  include URLFormatter
+
   before_action :set_derby_event, only: [:show, :edit, :update]
 
   # GET /derby_events
@@ -37,7 +39,6 @@ class DerbyEventsController < ApplicationController
 
   # POST /derby_events
   def create
-    derby_event_params[:start_date]
     @derby_event = DerbyEvent.new(derby_event_params)
 
     respond_to do |format|
@@ -88,11 +89,16 @@ class DerbyEventsController < ApplicationController
     def derby_event_params
       event_params = params.require(:derby_event).permit(:name, :start_date, :start_time, :end_date, :end_time, :venue, :city, :state, :postal_code, :country, :host, :website, :event_contact, :cost, :mrda, :wftda, :jrda, :made, :usars, :rdcl, :female, :male, :coed, :preregistration, :spectators, :general_info, :submission_contact, :approved, :deleted)
 
+      unless event_params[:website].blank?
+        event_params[:website] = format_url_for_db(event_params[:website])
+      end
+                                              
       [:start_date, :end_date].each do |date_field|
-        if !event_params[date_field].blank?
+        unless event_params[date_field].blank?
           event_params[date_field] = format_date_for_db(event_params[date_field])
         end
       end
+
       event_params
     end
 end
